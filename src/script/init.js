@@ -7,8 +7,6 @@ calcFramePerSecondAndSetMilliSecond();
 
 let crosshair = new setCrosshair();
 
-gameObjectList.length = 2000;
-
 setCanvasFontSize();
 
 loadObjects();

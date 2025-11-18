@@ -4,13 +4,13 @@ class gameObjectMoudle {
     }
 
     addToObjectList() {
-        if (this.objectIDcode == "player") {
-            gameObjectList["player"] = this;
+        if (this.objectIDcode == 0) {
+            gameObjectList[0] = this;
 
             return;
         }
 
-        for (let i = 0; i < gameObjectList.length; i++) {
+        for (let i = 0; i < maximumListNumber; i++) {
             if (gameObjectList[i] == null) {
                 gameObjectList[i] = this;
 
@@ -21,7 +21,7 @@ class gameObjectMoudle {
 }
 
 class people extends gameObjectMoudle {
-    constructor(x, y, z, width, height, name, color, speed, health, maximumHealth, fullHealth, weight, maximumWeight, armor, outfit, gear, backpacking, dead, equiptedItem) {
+    constructor(x, y, z, width, height, ID, color, speed, health, maximumHealth, fullHealth, weight, maximumWeight, armor, outfit, gear, backpacking, dead, equiptedItem) {
         super();
 
         this.objectType = "entity";
@@ -47,10 +47,23 @@ class people extends gameObjectMoudle {
         this.equiptedItem.equipted = false;
         this.equiptedItem = null;
     }
-}
 
+    draw() {
+        ctx.fillStyle = this.color;
+
+        ctx.fillRect(
+            rendOffset.x - (this.width / 2) - (playerViewpoint.x - this.x),
+            rendOffset.y - (this.height / 2) - (this.y - playerViewpoint.y),
+            this.width,
+            this.height
+        );
+
+        console.log("called")
+    }
+}
+    
 class drops extends gameObjectMoudle {
-    constructor(x, y, z, name, model, diraction) {
+    constructor(x, y, z, ID, model, diraction) {
         super();
 
         this.objectType = "entity";
@@ -58,7 +71,7 @@ class drops extends gameObjectMoudle {
 }
 
 class item extends gameObjectMoudle{
-    constructor(name, shortspell, description, type, weight, width, height, depth, x, y, z, model, equipted, failure, broken) {
+    constructor(ID, shortspell, description, type, weight, width, height, depth, x, y, z, model, equipted, failure, broken) {
         super();
 
         this.objectType = "entity";

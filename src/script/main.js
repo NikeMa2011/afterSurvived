@@ -13,7 +13,7 @@ let windowSize = {
 let framePerSecond = 60;
 let framePerSecondInMillisecond;
 
-let playerName = "player";
+let playerID = "player";
 
 let playerViewpoint = {
     x : 0,
@@ -25,17 +25,16 @@ let rendOffset = {
     y : 0,
     speed : 0.2
 };
-let rendTarget = {
+let rendTargetPosition = {
     x : 0,
     y : 0
 }
 
+let maximumListNumber = 2000;
+
 let gameObjectList = {};
-
-let rendSceneList = {};
-let rendEntityList = {};
-
 let rendObjectList = {};
+let rendObjectSet = [];
 
 let rendRatio = 1;
 

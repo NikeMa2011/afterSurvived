@@ -16,8 +16,6 @@ function loadObjects() {
 
     entity_people_player = new people();
     entity_people_player.objectIDstring = "entity_people_player";
-    entity_people_player.name = playerName;
-    entity_people_player.objectIDcode = "player";
 
     // 物品
     item_ammo_9x19mm = new ammo();
@@ -27,7 +25,7 @@ function loadObjects() {
     item_ammo_9x19mm.armorPiercing = 34;
     item_ammo_9x19mm.caliber = "9x19mm";
     item_ammo_9x19mm.durability = 0.018;
-    item_ammo_9x19mm.name = "9×19毫米帕拉贝鲁姆弹";
+    item_ammo_9x19mm.ID = "9×19毫米帕拉贝鲁姆弹";
     item_ammo_9x19mm.shortspell = "9×19毫米子弹";
     item_ammo_9x19mm.description = "9*19毫米帕拉贝鲁姆弹", "9*19mm*", "9*19毫米帕拉贝鲁姆弹（9*19 mm Parabellum）是一种手枪及冲锋枪使用的无缘间缩式子弹，是现今全世界最广泛使用的手枪弹种，经常被直接简称为\"9毫米弹\"（\"9 mm\"或\"9 mil\"）。";
     item_ammo_9x19mm.type = "ammo";
@@ -42,7 +40,7 @@ function loadObjects() {
     item_magazine_pistol_glock19.ammoCaliber = "9x19mm";
     item_magazine_pistol_glock19.maximumAmmoRound = 15;
     item_magazine_pistol_glock19.magazineType = "glock19_doubleStack_magazine";
-    item_magazine_pistol_glock19.name = "格洛克19 15发标准弹匣";
+    item_magazine_pistol_glock19.ID = "格洛克19 15发标准弹匣";
     item_magazine_pistol_glock19.shortspell = "格洛克15发弹匣";
     item_magazine_pistol_glock19.description = "适用于格洛克19的15发标准弹匣, 也可以装备于格洛克17使用.";
     item_magazine_pistol_glock19.type = "magazine";
@@ -61,7 +59,7 @@ function loadObjects() {
     weapon_pistol_glock19.fullDurability = weapon_pistol_glock19.durability;
     weapon_pistol_glock19.maximumDurability = weapon_pistol_glock19.fullDurability;
     weapon_pistol_glock19.weaponType = "pistol";
-    weapon_pistol_glock19.name = "第三代格洛克19 半自动手枪";
+    weapon_pistol_glock19.ID = "第三代格洛克19 半自动手枪";
     weapon_pistol_glock19.shortspell = "格洛克19";
     weapon_pistol_glock19.description = "格洛克19（Glock 19）是由奥地利格洛克公司设计及生产的半自动手枪，是格洛克17的紧凑型版本，发射9×19毫米帕拉贝鲁姆弹，标准弹匣为15发。";
     weapon_pistol_glock19.type = "weapon";
@@ -73,8 +71,8 @@ function loadObjects() {
 }
 
 const level = {
-    load(levelName) {
-        if (levelName == "test") {
+    load(levelID) {
+        if (levelID == "test") {
             // 场景
             scene_playerPlatform.x = 0;
             scene_playerPlatform.y = 0;
@@ -86,9 +84,13 @@ const level = {
             scene_text.x = 50;
             scene_text.y = 50;
             scene_text.z = 0;
+            scene_text.height = 0;
+            scene_text.width = 0;
             scene_text.addToObjectList();
 
             // 实体
+            entity_people_player.ID = playerID;
+            entity_people_player.objectIDcode = 0;
             entity_people_player.x = 0;
             entity_people_player.y = 0;
             entity_people_player.z = 0;
@@ -111,9 +113,11 @@ const level = {
             entity_people_player.equipt(weapon_pistol_glock19);
             entity_people_player.addToObjectList();
 
-            entity_people.x = 400;
-            entity_people.y = 400;
+            entity_people.x = -200;
+            entity_people.y = 0;
             entity_people.z = 0;
+            entity_people.width = 50;
+            entity_people.height = 100;
             entity_people.color = "#00aeff";
 
             entity_people.addToObjectList();

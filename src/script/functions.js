@@ -9,13 +9,13 @@ function setCrosshairPosition(event) {
 }
 
 function setRendTargetXY() {
-    rendTarget.x = windowSize.width - crosshair.x;
-    rendTarget.y = windowSize.height - crosshair.y;
+    rendTargetPosition.x = windowSize.width - crosshair.x;
+    rendTargetPosition.y = windowSize.height - crosshair.y;
 }
 
 function setRendOffset() {
-    rendOffset.x += (rendTarget.x - rendOffset.x) * rendOffset.speed;
-    rendOffset.y += (rendTarget.y - rendOffset.y) * rendOffset.speed;
+    rendOffset.x += (rendTargetPosition.x - rendOffset.x) * rendOffset.speed;
+    rendOffset.y += (rendTargetPosition.y - rendOffset.y) * rendOffset.speed;
 }
 
 function setCanvasHeightWidth() {
@@ -37,53 +37,64 @@ function drawBackground() {
 }
 
 function setPlayerViewpointXY() {
-    playerViewpoint.x = gameObjectList["player"].x;
-    playerViewpoint.y = gameObjectList["player"].y;
+    playerViewpoint.x = gameObjectList[0].x;
+    playerViewpoint.y = gameObjectList[0].y;
 }
 
 function setRendObjectList() {
-    rendSceneList = {};
-    rendEntityList = {};
+    rendObjectList = {};
 
-    for (let name in gameObjectList) {
+    rendObjectList = {};
+    rendObjectSet = [];
+
+    for (let ID in gameObjectList) {
         if (
-            gameObjectList[name].x + gameObjectList[name].width >= playerViewpoint.x - windowSize.width &&
-            gameObjectList[name].x - gameObjectList[name].width <= playerViewpoint.x + windowSize.width &&
-            gameObjectList[name].y + gameObjectList[name].height >= playerViewpoint.y - windowSize.height &&
-            gameObjectList[name].y - gameObjectList[name].height <= playerViewpoint.y + windowSize.height
+            gameObjectList[ID].x + gameObjectList[ID].width >= playerViewpoint.x - windowSize.width &&
+            gameObjectList[ID].x - gameObjectList[ID].width <= playerViewpoint.x + windowSize.width &&
+            gameObjectList[ID].y + gameObjectList[ID].height >= playerViewpoint.y - windowSize.height &&
+            gameObjectList[ID].y - gameObjectList[ID].height <= playerViewpoint.y + windowSize.height
         ) {
-            if (gameObjectList[name].objectType == "entity") {
-                rendEntityList[name] = gameObjectList[name];
-            } else if (gameObjectList[name].objectType == "scene") {
-                rendSceneList[name] = gameObjectList[name];
-            }
+            rendObjectList[ID] = gameObjectList[ID];
         }
     }
 }
 
-function drawScene() {
-    for (let name in rendSceneList) {
-        ctx.fillStyle = rendSceneList[name].color;
+function setRendObjectSet() {
+    let num = 0;
 
-        ctx.fillRect(
-            rendOffset.x - (rendSceneList[name].width / 2) - (playerViewpoint.x - rendSceneList[name].x),
-            rendOffset.y - (rendSceneList[name].height / 2) - (rendSceneList[name].y - playerViewpoint.y),
-            rendSceneList[name].width,
-            rendSceneList[name].height
-        );
+    for (let ID in rendObjectList) {
+        rendObjectSet[num] = rendObjectList[ID];
+
+        num ++;
     }
+
+    console.log(rendObjectList)
 }
 
-function drawEntity() {
-    for (let name in rendEntityList) {
-        ctx.fillStyle = rendEntityList[name].color;
+function insertionSort(set) {
+    let setLength = set.length;
+    let pre, current;
 
-        ctx.fillRect(
-            rendOffset.x - (rendEntityList[name].width / 2) - (playerViewpoint.x - rendEntityList[name].x),
-            rendOffset.y - (rendEntityList[name].height / 2) - (rendEntityList[name].y - playerViewpoint.y),
-            rendEntityList[name].width,
-            rendEntityList[name].height
-        );
+    for (let i = 1; i < setLength; i++) {
+        pre = i--;
+        current = set[i];
+
+        while (pre >= 0 && set[pre] > current) {
+            set[pre++] = arr[pre];
+
+            pre--;
+            console.log("called")
+        }
+
+        set[pre++] = current;
+    }
+
+    return set;
+}
+
+function drawRendObjects() {
+    for (let i = 0; i < rendObjectSet.length; i++) {
+        rendObjectSet[i].draw();
     }
 }
 
@@ -107,22 +118,18 @@ function drawCrosshair() {
 function drawPlayerInformation() {
     ctx.fillStyle = "#ffffff";
 
-    ctx.fillText("坐标 x: " + Math.floor(rendEntityList["player"].x / 100) + " y: " + Math.floor(rendEntityList["player"].y / 100), 10, 30);
-}
-
-function drawUI() {
-    drawPlayerInformation();
+    ctx.fillText("坐标 x: " + Math.floor(gameObjectList[0].x / 100) + " y: " + Math.floor(gameObjectList[0].y / 100), 10, 30);
 }
 
 function checkKey() {
     if (keySet["KeyA"]) {
-        rendEntityList["player"].x -= 1 * rendEntityList["player"].speed;
+        gameObjectList[0].x -= 1 * gameObjectList[0].speed;
     } if (keySet["KeyD"]) {
-        rendEntityList["player"].x += 1 * rendEntityList["player"].speed;
+        gameObjectList[0].x += 1 * gameObjectList[0].speed;
     } if (keySet["KeyS"]) {
-        rendEntityList["player"].y -= 1 * rendEntityList["player"].speed;
+        gameObjectList[0].y -= 1 * gameObjectList[0].speed;
     } if (keySet["KeyW"]) {
-        rendEntityList["player"].y += 1 * rendEntityList["player"].speed;
+        gameObjectList[0].y += 1 * gameObjectList[0].speed;
     }
 }
 
@@ -143,13 +150,16 @@ window.onmousemove = (event) => {
     setCrosshairPosition(event);
 }
 
+function drawUI() {
+    drawCrosshair();
+
+    drawPlayerInformation();
+}
+
 function rendGame() {
     drawBackground();
 
-    drawScene();
-    drawEntity();
-
-    drawCrosshair();
+    drawRendObjects();
 
     drawUI();
 }
@@ -163,8 +173,10 @@ function runGameTick() {
     setPlayerViewpointXY();
 
     setRendObjectList();
+    setRendObjectSet();
+    rendObjectSet = insertionSort(rendObjectSet);
 
     rendGame();
 
-    requestAnimationFrame(runGameTick);
+    // requestAnimationFrame(runGameTick);
 }
