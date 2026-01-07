@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <link rel="shortcut icon" href="" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+    <title>HTML file</title>
+</head>
+
+<body>
+    <canvas id="canvas" height="" width=""></canvas>
+</body>
+
+<!-- 这是用来生成那种空白背景的格子的图片的网页 -->
+
+<script>
+    const canvasDOM = document.getElementById("canvas");
+    const canvasContext = canvasDOM.getContext("2d");
+
+    let canvas = {
+        size : {
+            height : 900,
+            width: 1600
+        }
+    };
+
+    let block = {
+        color : "#c3c3c3",
+        size : 10,
+        quantity : {
+            x : 0,
+            y : 0
+        }
+    };
+
+    canvasDOM.height = canvas.size.height;
+    canvasDOM.width = canvas.size.width;
+
+    block.quantity.x = Math.floor(canvas.size.width / block.size);
+    block.quantity.y = Math.floor(canvas.size.height / block.size);
+
+    canvasContext.fillStyle = "#ffffff";
+
+    canvasContext.fillRect(0, 0, canvas.size.width, canvas.size.height);
+
+    canvasContext.fillStyle = block.color;
+
+    for (let y = 0; y < block.quantity.y; y++) {
+        for (let x = 0; x < block.quantity.x; x++) {
+            if (y % 2 == 0) {
+                if (x % 2 == 0) {
+                    canvasContext.fillRect(x * block.size, y * block.size, block.size, block.size);
+                }
+            } else {
+                if (x % 2 != 0) {
+                    canvasContext.fillRect(x * block.size, y * block.size, block.size, block.size);
+                }
+            }
+        }
+    }
+</script>
+
+</html>
