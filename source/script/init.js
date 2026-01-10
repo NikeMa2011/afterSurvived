@@ -1,0 +1,5 @@
+cursorType.normal();
+
+setCamvasSize();
+
+resetCanvasFrame();
