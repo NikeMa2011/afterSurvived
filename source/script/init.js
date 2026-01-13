@@ -1,5 +1,7 @@
-cursorType.normal();
+cursor.change("normal");
 
-setCamvasSize();
+canvas.size.set();
 
-resetCanvasFrame();
+rendStatus.type = "startManu";
+
+canvas.loop();

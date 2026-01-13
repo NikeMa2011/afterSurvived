@@ -6,27 +6,31 @@ function checkKey() {
 
 }
 
-let cursorType = {
-    hide() {
-        canvasDOM.style.cursor = "none";
-    },
-    point() {
-        canvasDOM.style.cursor = "pointer";
-    },
-    normal() {
-        canvasDOM.style.cursor = "auto";
-    },
-    disable() {
-        canvasDOM.style.cursor = "not-allowed";
+const cursor = {
+    change(type) {
+        if (type == "hide") {
+            canvasDOM.style.cursor = "none";
+        } else if (type == "point") {
+            canvasDOM.style.cursor = "pointer";
+        } else if (type == "normal") {
+            canvasDOM.style.cursor = "auto";
+        } else if (type == "disable") {
+            canvasDOM.style.cursor = "not-allowed";
+        } else {
+            throw Error;
+        }
     }
 };
 
-window.addEventListener("resize", setCamvasSize);
+window.addEventListener("resize", () => {
+    UI.font.set();
+    canvas.size.set();
+});
 
 window.addEventListener("keyDown", (event) => {
-    if (inGame) keySets[event.key] = true;
+    if (rendStatus.inGame) keySets[event.key] = true;
 });
 
 window.addEventListener("keyup", (event) => {
-    if (inGame) keySets[event.key] = false;
+    if (rendStatus.inGame) keySets[event.key] = false;
 });

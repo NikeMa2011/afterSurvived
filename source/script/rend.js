@@ -1,4 +1,4 @@
-function setCamvasSize() {
+canvas.size.set = () => {
     canvas.size.width = window.innerWidth;
     canvas.size.height = window.innerHeight;
 
@@ -6,11 +6,35 @@ function setCamvasSize() {
     canvasDOM.height = canvas.size.height;
 }
 
-function setMousePosition(event) {
+mouse.position.set = (event) => {
     mouse.position.x = event.clientX;
     mouse.position.y = event.clientY;
 }
 
-function resetCanvasFrame() {
+canvas.setFrame = () => {
+    canvasContext.fillStyle = "#ffffff";
+
     canvasContext.fillRect(0, 0, canvas.size.width, canvas.size.height);
+}
+
+canvas.rend = () => {
+    canvas.setFrame();
+
+    if (rendStatus.type == "startManu") {
+        UI.rend.manu.startManu();
+    }
+}
+
+window.addEventListener("onclick", {
+
+});
+
+canvas.loop = () => {
+    canvas.rend();
+
+    // window.requestAnimationFrame(loop);
+
+    setTimeout(() => {
+        canvas.loop();
+    }, 200);
 }
