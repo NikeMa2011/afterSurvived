@@ -4,26 +4,28 @@ canvas.size.set = () => {
 
     canvasDOM.width = canvas.size.width;
     canvasDOM.height = canvas.size.height;
-}
+};
 
 mouse.position.set = (event) => {
     mouse.position.x = event.clientX;
     mouse.position.y = event.clientY;
-}
+};
 
-canvas.setFrame = () => {
+canvas.clear = () => {
     canvasContext.fillStyle = "#ffffff";
 
     canvasContext.fillRect(0, 0, canvas.size.width, canvas.size.height);
-}
+};
 
 canvas.rend = () => {
-    canvas.setFrame();
+    events.tick();
+
+    canvas.clear();
 
     if (rendStatus.type == "startManu") {
         UI.rend.manu.startManu();
     }
-}
+};
 
 window.addEventListener("onclick", {
 
@@ -37,4 +39,4 @@ canvas.loop = () => {
     setTimeout(() => {
         canvas.loop();
     }, 200);
-}
+};

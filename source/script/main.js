@@ -13,6 +13,8 @@ let mouse = {
     }
 };
 
+let cursor = {}
+
 let canvas = {
     size: {
         height: undefined,
@@ -28,6 +30,18 @@ let viewPoint = {
     rendRatio: 1
 };
 
+let objects = {
+    game: {},
+    UI: {},
+
+    length: {
+        game: undefined,
+        UI: undefined,
+
+        maximum: 500
+    }
+}
+
 let player = {
     cooridates: {
         x: undefined,
@@ -38,18 +52,25 @@ let player = {
 
 let keySets = {};
 
-const UI = {
+let UI = {
     button: {
         size: {
             width: 300,
             height: 80
         },
-        color: "#0000000f"
+        color: "#0000000f",
+        textGap: {
+            offset: undefined
+        },
+        buttonPart: {
+            size: undefined
+        }
     },
-    font: {
+    text: {
         size: {
-            text: 20,
-            title: 60
+            small: 16,
+            medium: 20,
+            big: 60
         },
         famliy: "sans-serif"
     },
@@ -60,5 +81,11 @@ const UI = {
         manu: {
 
         }
+    }
+}
+
+const events = {
+    oprate: {
+        mouse: {}
     }
 }
