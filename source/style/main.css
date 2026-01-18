@@ -5,14 +5,8 @@
 
 body {
     overflow: hidden;
-
-    /* background-image: url(../../assets/image/background.png); */
 }
 
 canvas {
     display: block;
-}
-
-.gameName {
-    font-size: xx-large;
 }

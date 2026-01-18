@@ -1,91 +1,55 @@
 const canvasDOM = document.getElementById("canvas");
 const canvasContext = canvasDOM.getContext("2d");
 
-let rendStatus = {
-    inGame: false,
-    type: null
+const titleDOM = document.getElementById("title");
+
+const canvas = {
+    size: {
+        height: undefined,
+        width: undefined
+    },
+    cursor: {
+
+    }
 };
 
-let mouse = {
+const game = {
+    status: undefined,
+    inGame: undefined
+};
+
+const mouse = {
     position: {
         x: undefined,
         y: undefined
     }
 };
 
-let cursor = {}
-
-let canvas = {
-    size: {
-        height: undefined,
-        width: undefined
-    }
-};
-
-let viewPoint = {
-    cooridates: {
-        x: undefined,
-        y: undefined
-    },
-    rendRatio: 1
-};
-
-let objects = {
-    game: {},
+const objectSet = {
     UI: {},
-
-    length: {
-        game: undefined,
-        UI: undefined,
-
-        maximum: 500
-    }
-}
-
-let player = {
-    cooridates: {
-        x: undefined,
-        y: undefined
-    },
-    ID: undefined
+    game: {},
+    maximumNumber : 100
 };
 
-let keySets = {};
-
-let UI = {
-    button: {
+const UI = {
+    font: {
+        famliy: "sans-serif",
         size: {
-            width: 300,
-            height: 80
-        },
-        color: "#0000000f",
-        textGap: {
-            offset: undefined
-        },
-        buttonPart: {
-            size: undefined
-        }
-    },
-    text: {
-        size: {
-            small: 16,
+            large: 50,
             medium: 20,
-            big: 60
-        },
-        famliy: "sans-serif"
-    },
-    padding: 20,
-    rendRatio: 1,
-
-    rend: {
-        manu: {
-
+            small: 18
         }
-    }
-}
+    },
+    padding : 20,
+    text: {},
+    manu: {}
+};
 
-const events = {
-    oprate: {
-        mouse: {}
-    }
-}
+const event = {
+    mouse: {},
+    key: {}
+};
+
+const settings = {
+
+};
