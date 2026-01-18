@@ -10,7 +10,8 @@ const canvas = {
     },
     cursor: {
 
-    }
+    },
+    color: {}
 };
 
 const game = {
