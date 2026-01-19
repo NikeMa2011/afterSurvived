@@ -13,8 +13,8 @@ mouse.position.set = (event) => {
     mouse.position.y = event.clientY;
 };
 
-input.key.check = (event) => {
-    if (event.key == "Escape") {
+input.key.check = () => {
+    if (keySet["Escape"]) {
         if (game.inGame) {
             game.changeSite("normalSite");
         } else if (

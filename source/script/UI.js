@@ -35,7 +35,8 @@ UI.manu.startManu = () => {
         "开始游戏",
         UI.font.size.large,
         UI.padding,
-        canvas.size.height - (UI.padding + UI.font.size.large) - UI.padding - UI.font.size.large
+        canvas.size.height - (UI.padding + UI.font.size.large) - UI.padding - UI.font.size.large,
+        "gameManu"
     );
 
     UI.text.add(

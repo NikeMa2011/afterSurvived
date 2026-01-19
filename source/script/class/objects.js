@@ -22,7 +22,7 @@ class text extends UI_moudle {
 
     click() {
         if (this.target != undefined) {
-            game.site = this.target;
+            game.changeSite(this.target)
         }
     }
 }

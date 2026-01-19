@@ -14,3 +14,11 @@ onmousedown = (event) => {
         input.mouse.right();
     }
 };
+
+onkeyup = (event) => {
+    keySet[event.key] = false;;
+};
+
+onkeydown = (event) => {
+    keySet[event.key] = true;
+};

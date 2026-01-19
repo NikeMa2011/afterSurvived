@@ -1,13 +1,15 @@
 game.tick = () => {
     objectSet.clear();
+    canvas.clear();
 
-    UI.manu.startManu();
+    input.key.check();
 
+    game.site();
     game.rend();
 
-    // setTimeout(() => {
-    //     game.tick();
-    // }, 50);
+    setTimeout(() => {
+        game.tick();
+    }, 50);
 };
 
 game.siteStringToFunction = (string) => {

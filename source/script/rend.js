@@ -11,6 +11,11 @@ game.rend = () => {
 
 };
 
+canvas.clear = () => {
+    canvas.color.set("#ffffff");
+    canvasContext.fillRect(0, 0, canvas.size.width, canvas.size.height);
+};
+
 canvas.color.set = (color) => {
     canvasContext.fillStyle = color;
 };
