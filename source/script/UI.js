@@ -1,4 +1,4 @@
-UI.text.add = (string, color, size, x, y) => {
+UI.text.add = (string, size, x, y, color) => {
     let object = new text();
 
     object.string = string;

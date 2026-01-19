@@ -3,6 +3,6 @@ canvas.size.set();
 
 game.inGame = false;
 
-game.status = UI.manu.startManu();
+game.frame = UI.manu.startManu();
 
 game.tick();

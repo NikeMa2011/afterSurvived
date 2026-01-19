@@ -1,5 +1,7 @@
 game.tick = () => {
-    game.status;
+    objectSet.clear();
+
+    game.frame;
 
     game.rend();
 

@@ -16,6 +16,7 @@ const canvas = {
 
 const game = {
     status: undefined,
+    frame: undefined,
     inGame: undefined
 };
 
@@ -29,7 +30,11 @@ const mouse = {
 const objectSet = {
     UI: {},
     game: {},
-    maximumNumber : 100
+    maximumNumber : 100,
+    length: {
+        UI: undefined,
+        game: undefined
+    }
 };
 
 const UI = {
