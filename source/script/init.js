@@ -5,6 +5,6 @@ canvasContext.textBaseline = "hanging";
 
 game.inGame = false;
 
-game.UI = UI.manu.startManu;
+game.changeSite("startManu");
 
 game.tick();

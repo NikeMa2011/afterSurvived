@@ -1,5 +1,5 @@
 class UI_moudle {
-    constructor(x, y, height, width, color) {
+    constructor(x, y, height, width, color, target) {
 
     }
 }
@@ -21,6 +21,8 @@ class text extends UI_moudle {
     }
 
     click() {
-        console.log("clicked: " + this.string);
+        if (this.target != undefined) {
+            game.site = this.target;
+        }
     }
 }

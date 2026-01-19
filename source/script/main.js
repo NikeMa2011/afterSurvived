@@ -16,7 +16,8 @@ const canvas = {
 
 const game = {
     status: undefined,
-    UI: undefined,
+    site: undefined,
+    siteName : undefined,
     inGame: undefined,
     version: undefined
 };
@@ -44,6 +45,7 @@ const UI = {
     font: {
         famliy: "sans-serif",
         size: {
+            extremeBig: 100,
             large: 50,
             medium: 20,
             small: 18
@@ -69,7 +71,7 @@ const user = {
 
         },
         vdieo: {
-            
+
         }
     },
 };

@@ -14,16 +14,23 @@ mouse.position.set = (event) => {
 };
 
 input.key.check = (event) => {
-    if (game.inGame) {
-        if (event.key == "Escape") {
-            
+    if (event.key == "Escape") {
+        if (game.inGame) {
+            game.changeSite("normalSite");
+        } else if (
+            game.siteName == "gameManu" ||
+            game.siteName == "settingManu"
+        ) {
+            game.changeSite("startManu");
         }
+    } else if (game.inGame) {
+
     }
 };
 
 input.mouse.left = () => {
     if (game.inGame) {
-        
+
     } else {
         for (let i = 0; i < objectSet.UI.length; i++) {
             if (
