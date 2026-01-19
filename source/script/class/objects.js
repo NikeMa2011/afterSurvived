@@ -2,6 +2,12 @@ class UI_moudle {
     constructor(x, y, height, width, color, target) {
 
     }
+
+    click() {
+        if (this.target != undefined) {
+            game.changeSite(this.target)
+        }
+    }
 }
 
 class text extends UI_moudle {
@@ -19,10 +25,21 @@ class text extends UI_moudle {
             this.y
         );
     }
+}
 
-    click() {
-        if (this.target != undefined) {
-            game.changeSite(this.target)
-        }
+class box extends UI_moudle {
+    constructor() {
+        super();
+    }
+
+    draw() {
+        canvas.color.set(this.color);
+
+        canvasContext.strokeRect(
+            this.x,
+            this.y,
+            this.width,
+            this.height
+        );
     }
 }

@@ -53,7 +53,8 @@ const UI = {
     },
     padding : 20,
     text: {},
-    manu: {}
+    manu: {},
+    box: {}
 };
 
 const input = {

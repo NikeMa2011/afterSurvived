@@ -1,6 +1,8 @@
 onresize = () => {
     canvas.size.get();
     canvas.size.set();
+
+    canvasContext.textBaseline = "hanging";
 };
 
 onmousemove = (event) => {
@@ -16,7 +18,7 @@ onmousedown = (event) => {
 };
 
 onkeyup = (event) => {
-    keySet[event.key] = false;;
+    keySet[event.key] = false;
 };
 
 onkeydown = (event) => {

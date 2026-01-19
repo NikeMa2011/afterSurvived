@@ -9,7 +9,7 @@ game.tick = () => {
 
     setTimeout(() => {
         game.tick();
-    }, 50);
+    }, 25);
 };
 
 game.siteStringToFunction = (string) => {
@@ -28,8 +28,4 @@ game.siteStringToFunction = (string) => {
 game.changeSite = (string) => {
     game.site = game.siteStringToFunction(string);
     game.siteName = string;
-}
-
-game.siteEscape = () => {
-
 }
