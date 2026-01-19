@@ -13,7 +13,7 @@ UI.text.add = (string, height, x, y, color) => {
 
 UI.font.set = (height) => {
     canvasContext.font = height + "px " + UI.font.famliy;
-}
+};
 
 UI.manu.startManu = () => {
     UI.text.add(
@@ -29,4 +29,8 @@ UI.manu.startManu = () => {
         UI.padding,
         canvas.size.height - (UI.padding + UI.font.size.large) - UI.padding - UI.font.size.large
     );
+};
+
+UI.manu.gameManu = () => {
+    
 };

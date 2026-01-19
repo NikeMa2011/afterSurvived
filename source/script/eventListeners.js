@@ -13,4 +13,4 @@ onmousedown = (event) => {
     } else if (event.button == 2) {
         input.mouse.right();
     }
-}
+};

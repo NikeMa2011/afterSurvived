@@ -59,6 +59,17 @@ const input = {
     key: {}
 };
 
-const settings = {
+const user = {
+    name: undefined,
+    progress: {
+        achievement: {},
+    },
+    settings: {
+        keyBind: {
 
+        },
+        vdieo: {
+            
+        }
+    },
 };
