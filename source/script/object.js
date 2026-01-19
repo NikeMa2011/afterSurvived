@@ -1,29 +1,19 @@
 objectSet.UI.add = (object) => {
-    for (let i = 0; i < objectSet.maximumNumber; i++) {
-        if (objectSet.UI == undefined) {
-            objectSet.UI = object;
+    objectSet.UI.objects[objectSet.UI.length] = object;
 
-            objectSet.length.UI++;
-        }
-    }
-
+    objectSet.UI.length++;
 };
 
 objectSet.game.add = (object) => {
-    for (let i = 0; i < objectSet.maximumNumber; i++) {
-        if (objectSet.game == undefined) {
-            objectSet.game = object;
+    objectSet.game.objects[objectSet.game.length] = object;
 
-            objectSet.length.game++;
-        }
-    }
-
+    objectSet.game.length++;
 };
 
 objectSet.clear = () => {
-    objectSet.UI = {};
-    objectSet.game = {};
+    objectSet.UI.objects = {};
+    objectSet.game.objects = {};
 
-    objectSet.length.UI = 0;
-    objectSet.length.game = 0;
+    objectSet.UI.length = 0;
+    objectSet.game.length = 0;
 };

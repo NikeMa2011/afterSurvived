@@ -6,12 +6,13 @@ UI.text.add = (string, size, x, y, color) => {
     object.x = x;
     object.y = y;
     object.color = "#000000" || color;
+    object.width = 
 
     objectSet.UI.add(object);
 };
 
 UI.font.set = (size) => {
-    canvasContext.fon = size + "px " + UI.font.famliy;
+    canvasContext.font = size + "px " + UI.font.famliy;
 }
 
 UI.manu.startManu = () => {
@@ -20,5 +21,12 @@ UI.manu.startManu = () => {
         UI.font.size.large,
         UI.padding,
         canvas.size.height - UI.padding
+    );
+
+    UI.text.add(
+        "开始游戏",
+        UI.font.size.large,
+        UI.padding,
+        canvas.size.height - (UI.padding + UI.font.size.large) - UI.padding
     );
 };

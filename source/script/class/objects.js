@@ -5,7 +5,7 @@ class UI_moudle {
 }
 
 class text extends UI_moudle {
-    constructor(string, color, size) {
+    constructor(string, color, size, width) {
         super();
     }
 

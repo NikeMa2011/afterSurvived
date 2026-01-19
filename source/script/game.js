@@ -1,11 +1,11 @@
 game.tick = () => {
     objectSet.clear();
-
-    game.frame;
+    
+    UI.manu.startManu();
 
     game.rend();
 
-    setTimeout(() => {
-        game.tick();
-    },50);
+    // setTimeout(() => {
+    //     game.tick();
+    // }, 50);
 };
