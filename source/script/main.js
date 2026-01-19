@@ -17,7 +17,8 @@ const canvas = {
 const game = {
     status: undefined,
     UI: undefined,
-    inGame: undefined
+    inGame: undefined,
+    version: undefined
 };
 
 const mouse = {
@@ -53,7 +54,7 @@ const UI = {
     manu: {}
 };
 
-const event = {
+const input = {
     mouse: {},
     key: {}
 };

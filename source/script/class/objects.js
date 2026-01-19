@@ -1,16 +1,16 @@
 class UI_moudle {
-    constructor(x, y, color) {
+    constructor(x, y, height, width, color) {
 
     }
 }
 
 class text extends UI_moudle {
-    constructor(string, color, size, width) {
+    constructor(string, color) {
         super();
     }
 
     draw() {
-        UI.font.set(this.size);
+        UI.font.set(this.height);
         canvas.color.set(this.color);
 
         canvasContext.fillText(
@@ -18,5 +18,9 @@ class text extends UI_moudle {
             this.x,
             this.y
         );
+    }
+
+    click() {
+        console.log("clicked: " + this.string);
     }
 }
