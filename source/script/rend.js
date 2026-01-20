@@ -21,6 +21,8 @@ canvas.color.set = (color) => {
 };
 
 mouse.target.set = () => {
+    mouse.target.current = undefined;
+
     for (let i = 0; i < objectSet.UI.length; i++) {
         if (
             mouse.position.x >= objectSet.UI.objects[i].x &&
@@ -28,11 +30,13 @@ mouse.target.set = () => {
             mouse.position.y >= objectSet.UI.objects[i].y &&
             mouse.position.y <= objectSet.UI.objects[i].y + objectSet.UI.objects[i].height
         ) {
-            mouse.target.current = objectSet.UI.objects[i];
+            if (!mouse.target.current) {
+                mouse.target.current = objectSet.UI.objects[i];
+            }
 
             objectSet.UI.objects[i].onMouse = true;
-
-            return;
+        } else {
+            objectSet.UI.objects[i].onMouse = false;
         }
     }
 };

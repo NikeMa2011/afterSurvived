@@ -3,6 +3,9 @@ onresize = () => {
     canvas.size.set();
 
     canvasContext.textBaseline = "hanging";
+
+    objectSet.clear();
+    game.site();
 };
 
 onmousemove = (event) => {
