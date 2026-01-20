@@ -19,3 +19,20 @@ canvas.clear = () => {
 canvas.color.set = (color) => {
     canvasContext.fillStyle = color;
 };
+
+mouse.target.set = () => {
+    for (let i = 0; i < objectSet.UI.length; i++) {
+        if (
+            mouse.position.x >= objectSet.UI.objects[i].x &&
+            mouse.position.x <= objectSet.UI.objects[i].x + objectSet.UI.objects[i].width &&
+            mouse.position.y >= objectSet.UI.objects[i].y &&
+            mouse.position.y <= objectSet.UI.objects[i].y + objectSet.UI.objects[i].height
+        ) {
+            mouse.target.current = objectSet.UI.objects[i];
+
+            objectSet.UI.objects[i].onMouse = true;
+
+            return;
+        }
+    }
+};

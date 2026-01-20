@@ -1,5 +1,5 @@
-UI.text.add = (string, height, x, y, target, color) => {
-    let object = new text();
+UI.option.add = (string, height, x, y, target, color) => {
+    let object = new option();
 
     object.string = string;
     object.width = string.length * height;
@@ -8,6 +8,19 @@ UI.text.add = (string, height, x, y, target, color) => {
     object.y = y;
     object.color = color || "#000000";
     object.target = target;
+
+    objectSet.UI.add(object);
+};
+
+UI.text.add = (string, height, x, y, color) => {
+    let object = new text();
+
+    object.string = string;
+    object.width = string.length * height;
+    object.height = height;
+    object.x = x;
+    object.y = y;
+    object.color = color || "#000000";
 
     objectSet.UI.add(object);
 };
@@ -30,7 +43,7 @@ UI.font.set = (height) => {
 };
 
 UI.manu.startManu = () => {
-    UI.text.add(
+    UI.option.add(
         "设置",
         UI.font.size.large,
         UI.padding,
@@ -38,7 +51,7 @@ UI.manu.startManu = () => {
         "settingManu"
     );
 
-    UI.text.add(
+    UI.option.add(
         "开始游戏",
         UI.font.size.large,
         UI.padding,
@@ -55,14 +68,14 @@ UI.manu.startManu = () => {
 };
 
 UI.manu.normalManu = () => {
-    UI.text.add(
+    UI.option.add(
         "设置",
         UI.font.size.large,
         UI.padding,
         canvas.size.height - UI.padding - UI.font.size.large
     );
 
-        UI.text.add(
+    UI.option.add(
         "继续",
         UI.font.size.large,
         UI.padding,
@@ -87,17 +100,10 @@ UI.manu.gameManu = () => {
         UI.padding
     );
 
-    UI.box.add(
-        300,
-        300,
-        canvas.size.width / 2 - 150,
-        canvas.size.height / 2 - 150,
-    );
-
-    UI.text.add(
-        "存档一",
+    UI.option.add(
+        "测试地图",
         UI.font.size.large,
-        canvas.size.width / 2 - 75,
+        canvas.size.width / 2 - 100,
         canvas.size.height / 2 - UI.font.size.large / 2
     );
 };

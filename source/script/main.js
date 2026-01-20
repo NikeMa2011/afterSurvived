@@ -26,6 +26,9 @@ const mouse = {
     position: {
         x: undefined,
         y: undefined
+    },
+    target: {
+        current: undefined
     }
 };
 
@@ -54,7 +57,8 @@ const UI = {
     padding : 20,
     text: {},
     manu: {},
-    box: {}
+    box: {},
+    option: {}
 };
 
 const input = {

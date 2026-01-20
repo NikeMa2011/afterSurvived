@@ -2,9 +2,11 @@ game.tick = () => {
     objectSet.clear();
     canvas.clear();
 
-    input.key.check();
-
     game.site();
+
+    input.key.check();
+    mouse.target.set();
+
     game.rend();
 
     setTimeout(() => {
@@ -12,7 +14,7 @@ game.tick = () => {
     }, 25);
 };
 
-game.siteStringToFunction = (string) => {
+game.stringToFunction = (string) => {
     switch (string) {
         case "startManu":
             return UI.manu.startManu;
@@ -26,6 +28,6 @@ game.siteStringToFunction = (string) => {
 }
 
 game.changeSite = (string) => {
-    game.site = game.siteStringToFunction(string);
+    game.site = game.stringToFunction(string);
     game.siteName = string;
 }

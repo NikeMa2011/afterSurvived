@@ -1,3 +1,5 @@
+"use strict";
+
 canvas.size.get();
 canvas.size.set();
 
