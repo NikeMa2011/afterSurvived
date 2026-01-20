@@ -1,17 +1,14 @@
 game.tick = () => {
-    objectSet.clear();
     canvas.clear();
-
-    game.site();
 
     input.key.check();
     mouse.target.set();
 
     game.rend();
 
-    // setTimeout(() => {
-    //     game.tick();
-    // }, 25);
+    setTimeout(() => {
+        game.tick();
+    }, 25);
 };
 
 game.stringToFunction = (string) => {
@@ -28,6 +25,10 @@ game.stringToFunction = (string) => {
 }
 
 game.changeSite = (string) => {
+    objectSet.clear();
+
     game.site = game.stringToFunction(string);
     game.siteName = string;
+
+    game.site();
 }

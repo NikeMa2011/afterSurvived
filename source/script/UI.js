@@ -81,7 +81,7 @@ UI.manu.startManu = () => {
     );
 
     UI.image.add(
-        "assets/icons/icon.png",
+        "assets/icons/icon_smallSize.png",
         400,
         400,
         canvas.size.width - UI.padding - 400,
