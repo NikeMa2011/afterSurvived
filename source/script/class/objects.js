@@ -71,3 +71,26 @@ class box extends UI_moudle {
         );
     }
 }
+
+class image extends UI_moudle {
+    constructor(link) {
+        super();
+
+        delete this.color;
+    }
+
+    draw() {
+        let image = new Image();
+        image.src = this.link;
+
+        image.onload = () => {
+            canvasContext.drawImage(
+                image,
+                this.x,
+                this.y,
+                this.width,
+                this.height
+            );
+        };
+    }
+}

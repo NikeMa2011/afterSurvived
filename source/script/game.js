@@ -9,9 +9,9 @@ game.tick = () => {
 
     game.rend();
 
-    setTimeout(() => {
-        game.tick();
-    }, 25);
+    // setTimeout(() => {
+    //     game.tick();
+    // }, 25);
 };
 
 game.stringToFunction = (string) => {

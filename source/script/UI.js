@@ -38,6 +38,20 @@ UI.box.add = (width, height, x, y, target, color) => {
     objectSet.UI.add(object);
 };
 
+UI.image.add = (link, width, height, x, y) => {
+    if (!link) return;
+
+    let object = new image();
+
+    object.link = link;
+    object.width = width;
+    object.height = height;
+    object.x = x;
+    object.y = y;
+
+    objectSet.UI.add(object);
+};
+
 UI.font.set = (height) => {
     canvasContext.font = height + "px " + UI.font.famliy;
 };
@@ -63,6 +77,14 @@ UI.manu.startManu = () => {
         "beta 0.3.0",
         UI.font.size.small,
         UI.padding,
+        UI.padding
+    );
+
+    UI.image.add(
+        "assets/icons/icon.png",
+        400,
+        400,
+        canvas.size.width - UI.padding - 400,
         UI.padding
     );
 };

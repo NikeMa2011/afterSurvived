@@ -58,7 +58,8 @@ const UI = {
     text: {},
     manu: {},
     box: {},
-    option: {}
+    option: {},
+    image: {}
 };
 
 const input = {
