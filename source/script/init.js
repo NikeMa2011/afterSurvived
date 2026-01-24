@@ -5,8 +5,10 @@ canvas.size.set();
 
 canvasContext.textBaseline = "hanging";
 
+game.FPS.set();
+
 game.inGame = false;
 
-game.changeSite("startManu");
+game.siteChange("start");
 
 game.tick();

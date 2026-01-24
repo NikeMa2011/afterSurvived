@@ -1,13 +1,26 @@
-UI.option.add = (string, height, x, y, target, color) => {
+UI.option.add = (string, height, x, y, onclick, color) => {
     let object = new option();
 
     object.string = string;
-    object.width = string.length * height;
-    object.height = height;
-    object.x = x;
-    object.y = y;
+    object.size.width = string.length * height;
+    object.size.height = height;
+    object.position.x = x;
+    object.position.y = y;
     object.color = color || "#000000";
-    object.target = target;
+    onclick ? object.onclick = onclick : null;
+
+    objectSet.UI.add(object);
+};
+
+UI.banner.add = (string, height, x, y, color) => {
+    let object = new option();
+
+    object.string = string;
+    object.size.width = string.length * height;
+    object.size.height = height;
+    object.position.x = x;
+    object.position.y = y;
+    object.color = color || "#000000";
 
     objectSet.UI.add(object);
 };
@@ -16,24 +29,23 @@ UI.text.add = (string, height, x, y, color) => {
     let object = new text();
 
     object.string = string;
-    object.width = string.length * height;
-    object.height = height;
-    object.x = x;
-    object.y = y;
+    object.size.width = string.length * height;
+    object.size.height = height;
+    object.position.x = x;
+    object.position.y = y;
     object.color = color || "#000000";
 
     objectSet.UI.add(object);
 };
 
-UI.box.add = (width, height, x, y, target, color) => {
+UI.box.add = (width, height, x, y, color) => {
     let object = new box();
 
-    object.width = width;
-    object.height = height;
-    object.x = x;
-    object.y = y;
+    object.size.width = width;
+    object.size.height = height;
+    object.position.x = x;
+    object.position.y = y;
     object.color = color || "#000000";
-    object.target = target
 
     objectSet.UI.add(object);
 };
@@ -42,32 +54,47 @@ UI.font.set = (height) => {
     canvasContext.font = height + "px " + UI.font.famliy;
 };
 
-UI.manu.startManu = () => {
+UI.manu.start = () => {
     UI.option.add(
         "设置",
         UI.font.size.large,
         UI.padding,
         canvas.size.height - UI.padding - UI.font.size.large,
-        "settingManu"
+        () => game.siteChange("settings_graphic")
     );
 
     UI.option.add(
-        "开始游戏",
+        "商人",
         UI.font.size.large,
         UI.padding,
-        canvas.size.height - (UI.padding + UI.font.size.large) - UI.padding - UI.font.size.large,
-        "gameManu"
+        canvas.size.height - (UI.padding + UI.font.size.large) - UI.padding - UI.font.size.large
+    );
+
+    UI.option.add(
+        "藏身处",
+        UI.font.size.large,
+        UI.padding,
+        canvas.size.height - (UI.padding + UI.font.size.large) * 2 - UI.padding - UI.font.size.large,
+        () => map.hidePlace.load()
+    );
+
+    UI.option.add(
+        "逃离",
+        UI.font.size.large,
+        UI.padding,
+        canvas.size.height - (UI.padding + UI.font.size.large) * 3 - UI.padding - UI.font.size.large,
+        () => game.siteChange("map_choose")
     );
 
     UI.text.add(
-        "beta 0.3.0",
+        "alpha 0.3.1",
         UI.font.size.small,
         UI.padding,
         UI.padding
     );
 };
 
-UI.manu.normalManu = () => {
+UI.manu.normal = () => {
     UI.option.add(
         "设置",
         UI.font.size.large,
@@ -83,20 +110,27 @@ UI.manu.normalManu = () => {
     );
 };
 
-UI.manu.settingManu = () => {
+UI.manu.settings.graphic = () => {
+    UI.banner.add(
+        "设置-图形",
+        UI.font.size.large,
+        canvas.size.width / 2 - 100,
+        UI.padding
+    );
+
     UI.text.add(
-        "暂无",
-        UI.font.size.medium,
-        canvas.size.width / 2 - UI.font.size.medium / 2,
-        canvas.size.height / 2 - UI.font.size.medium / 2
+        "设置-图形",
+        UI.font.size.large,
+        canvas.size.width / 2 - 100,
+        UI.padding
     );
 };
 
-UI.manu.gameManu = () => {
+UI.manu.map = () => {
     UI.text.add(
-        "选择存档",
+        "选择地图",
         UI.font.size.large,
-        UI.padding,
+        canvas.size.width / 2 - 100,
         UI.padding
     );
 

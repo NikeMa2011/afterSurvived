@@ -16,12 +16,12 @@ mouse.position.set = (event) => {
 input.key.check = () => {
     if (keySet["Escape"]) {
         if (game.inGame) {
-            game.changeSite("normalSite");
+            game.siteChange("normal");
         } else if (
-            game.siteName == "gameManu" ||
-            game.siteName == "settingManu"
+            game.siteName == "map_choose" ||
+            game.siteName == "settings_graphic"
         ) {
-            game.changeSite("startManu");
+            game.siteChange("start");
         }
     } else if (game.inGame) {
 

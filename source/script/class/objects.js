@@ -1,35 +1,63 @@
 class UI_moudle {
-    constructor(x, y, height, width, color, onMouse) {
-
-    }
-
-    click() {
-        if (this.target != undefined) {
-            game.changeSite(this.target)
-        }
+    constructor() {
+        this.position = {
+            x: undefined,
+            y: undefined
+        };
+        this.size = {
+            height: undefined,
+            width: undefined
+        };
+        this.color = undefined;
+        this.onMouse = undefined;
     }
 }
 
 class text extends UI_moudle {
-    constructor(string, color) {
+    constructor() {
+        super();
+
+        this.string = undefined;
+    }
+
+    draw() {
+        canvas.color.set(this.color);
+        UI.font.set(this.size.height);
+
+        canvasContext.fillText(
+            this.string,
+            this.position.x,
+            this.position.y
+        );
+    }
+}
+
+class banner extends UI_moudle {
+    constructor() {
         super();
     }
 
     draw() {
-        UI.font.set(this.height);
         canvas.color.set(this.color);
 
-        canvasContext.fillText(
-            this.string,
-            this.x,
-            this.y
+        canvasContext.fillRect(
+            this.position.x,
+            this.position.y,
+            this.size.width,
+            this.size.height
         );
     }
 }
 
 class option extends UI_moudle {
-    constructor(target) {
+    constructor() {
         super();
+
+        this.onclick = game.function.disable;
+    }
+
+    click() {
+        this.onclick();
     }
 
     draw() {
@@ -37,20 +65,20 @@ class option extends UI_moudle {
             canvas.color.set("#88888820");
 
             canvasContext.fillRect(
-                this.x,
-                this.y,
-                this.width,
-                this.height
+                this.position.x,
+                this.position.y,
+                this.size.width,
+                this.size.height
             );
         }
 
-        UI.font.set(this.height);
         canvas.color.set(this.color);
+        UI.font.set(this.size.height);
 
         canvasContext.fillText(
             this.string,
-            this.x,
-            this.y
+            this.position.x,
+            this.position.y
         );
     }
 }
@@ -64,10 +92,10 @@ class box extends UI_moudle {
         canvas.color.set(this.color);
 
         canvasContext.strokeRect(
-            this.x,
-            this.y,
-            this.width,
-            this.height
+            this.position.x,
+            this.position.y,
+            this.size.width,
+            this.size.height
         );
     }
 }

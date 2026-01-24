@@ -8,27 +8,35 @@ game.tick = () => {
 
     setTimeout(() => {
         game.tick();
-    }, 25);
+    }, game.FPS.milisecond);
 };
 
 game.stringToFunction = (string) => {
     switch (string) {
-        case "startManu":
-            return UI.manu.startManu;
-        case "gameManu":
-            return UI.manu.gameManu;
-        case "settingManu":
-            return UI.manu.settingManu;
+        case "start":
+            return UI.manu.start;
+        case "normal":
+            return UI.manu.normal;
+        case "map_choose":
+            return UI.manu.map;
+        case "settings_graphic":
+            return UI.manu.settings.graphic;
+        case "function_disable":
+            return game.function.disable;
         default:
             return false;
     }
 }
 
-game.changeSite = (string) => {
-    objectSet.clear();
-
+game.siteChange = (string) => {
     game.site = game.stringToFunction(string);
     game.siteName = string;
 
+    objectSet.clear();
+
     game.site();
+}
+
+game.function.disable = () => {
+    alert("暂时没有此功能或者没有设置功能");
 }

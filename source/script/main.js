@@ -17,9 +17,21 @@ const canvas = {
 const game = {
     status: undefined,
     site: undefined,
-    siteName : undefined,
+    siteName: undefined,
     inGame: undefined,
-    version: undefined
+    version: undefined,
+    FPS: {
+        value: 40,
+        milisecond: undefined
+    },
+    function: {}
+};
+
+const viewpoint = {
+    position: {
+        x: undefined,
+        y: undefined
+    }
 };
 
 const mouse = {
@@ -41,7 +53,7 @@ const objectSet = {
         objects: {},
         length: {}
     },
-    maximumNumber : 100
+    maximumNumber: 100
 };
 
 const UI = {
@@ -54,12 +66,16 @@ const UI = {
             small: 18
         }
     },
-    padding : 20,
+    padding: 20,
     text: {},
-    manu: {},
+    manu: {
+        settings: {}
+    },
+    offset: undefined,
     box: {},
     option: {},
-    image: {}
+    image: {},
+    banner: {}
 };
 
 const input = {

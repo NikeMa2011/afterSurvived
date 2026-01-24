@@ -25,10 +25,10 @@ mouse.target.set = () => {
 
     for (let i = 0; i < objectSet.UI.length; i++) {
         if (
-            mouse.position.x >= objectSet.UI.objects[i].x &&
-            mouse.position.x <= objectSet.UI.objects[i].x + objectSet.UI.objects[i].width &&
-            mouse.position.y >= objectSet.UI.objects[i].y &&
-            mouse.position.y <= objectSet.UI.objects[i].y + objectSet.UI.objects[i].height
+            mouse.position.x >= objectSet.UI.objects[i].position.x &&
+            mouse.position.x <= objectSet.UI.objects[i].position.x + objectSet.UI.objects[i].size.width &&
+            mouse.position.y >= objectSet.UI.objects[i].position.y &&
+            mouse.position.y <= objectSet.UI.objects[i].position.y + objectSet.UI.objects[i].size.height
         ) {
             if (!mouse.target.current) {
                 mouse.target.current = objectSet.UI.objects[i];
@@ -40,3 +40,7 @@ mouse.target.set = () => {
         }
     }
 };
+
+game.FPS.set = () => {
+    game.FPS.milisecond = Math.round(1000 / game.FPS.value);
+}
