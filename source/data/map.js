@@ -18,6 +18,7 @@ map.hidePlace.load = () => {
     objectSet.clear();
 
     game.inGame = true;
+    game.status = "hidePlace";
 
     let player = gameObject.entity.player.create();
 

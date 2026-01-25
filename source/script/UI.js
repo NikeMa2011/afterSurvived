@@ -6,13 +6,12 @@ UI.option.add = (string, height, x, y, onclick, color) => {
     object.size.height = height;
     object.position.x = x;
     object.position.y = y;
-    object.color = color || "#000000";
     onclick ? object.onclick = onclick : null;
 
     objectSet.UI.add(object);
 };
 
-UI.banner.add = (string, height, x, y, color) => {
+UI.banner.add = (string, height, x, y) => {
     let object = new option();
 
     object.string = string;
@@ -20,12 +19,11 @@ UI.banner.add = (string, height, x, y, color) => {
     object.size.height = height;
     object.position.x = x;
     object.position.y = y;
-    object.color = color || "#000000";
 
     objectSet.UI.add(object);
 };
 
-UI.text.add = (string, height, x, y, color) => {
+UI.text.add = (string, height, x, y) => {
     let object = new text();
 
     object.string = string;
@@ -33,19 +31,17 @@ UI.text.add = (string, height, x, y, color) => {
     object.size.height = height;
     object.position.x = x;
     object.position.y = y;
-    object.color = color || "#000000";
 
     objectSet.UI.add(object);
 };
 
-UI.box.add = (width, height, x, y, color) => {
+UI.box.add = (width, height, x, y) => {
     let object = new box();
 
     object.size.width = width;
     object.size.height = height;
     object.position.x = x;
     object.position.y = y;
-    object.color = color || "#000000";
 
     objectSet.UI.add(object);
 };

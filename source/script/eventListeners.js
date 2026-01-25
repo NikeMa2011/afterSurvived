@@ -10,6 +10,11 @@ onresize = () => {
 
 onmousemove = (event) => {
     mouse.position.set(event);
+
+    if (game.inGame) {
+        viewpoint.position.set();
+        viewpoint.offset.set();
+    }
 };
 
 onmousedown = (event) => {

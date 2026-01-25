@@ -1,4 +1,6 @@
 game.rend = () => {
+    canvas.background();
+
     if (game.inGame) {
         for (let i = 0; i < objectSet.game.length; i++) {
             objectSet.game.objects[i].draw();
@@ -11,8 +13,8 @@ game.rend = () => {
 
 };
 
-canvas.clear = () => {
-    canvas.color.set("#ffffff");
+canvas.background = () => {
+    canvas.color.set("#202020");
     canvasContext.fillRect(0, 0, canvas.size.width, canvas.size.height);
 };
 

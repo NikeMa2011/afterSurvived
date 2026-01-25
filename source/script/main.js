@@ -19,6 +19,7 @@ const game = {
     site: undefined,
     siteName: undefined,
     inGame: undefined,
+    inMatch: undefined,
     version: undefined,
     FPS: {
         value: 40,
@@ -29,6 +30,10 @@ const game = {
 
 const viewpoint = {
     position: {
+        x: undefined,
+        y: undefined
+    },
+    offset: {
         x: undefined,
         y: undefined
     }
@@ -84,7 +89,7 @@ const input = {
 };
 
 const user = {
-    name: undefined,
+    name: "undefined",
     progress: {
         achievement: {},
     },

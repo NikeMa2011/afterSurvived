@@ -1,5 +1,5 @@
 class entity {
-    constructor(x, y, height, width, ID) {
+    constructor(x, y, height, width, ID, color) {
         this.position = {
             x: undefined,
             y: undefined
@@ -98,9 +98,13 @@ class people extends entity {
     }
 
     draw() {
+        // console.log('aa')
+        
+        canvas.color.set(this.color);
+
         canvasContext.fillRect(
-            this.x - viewpoint.position.x,
-            this.y = viewpoint.position.y,
+            this.x - viewpoint.position.x + viewpoint.offset.x,
+            this.y - viewpoint.position.y + viewpoint.offset.y,
             this.height,
             this.width
         );
@@ -112,6 +116,8 @@ gameObject.entity.player.create = () => {
 
     object.ID = "gameObject.entity.player";
     object.name = user.name;
+
+    object.color = "#ffffff";
 
     object.health.parts.head = object.health.parts.maximum.head = 40;
     object.health.parts.chest = object.health.parts.maximum.chest = 65;

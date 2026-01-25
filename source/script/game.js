@@ -1,6 +1,4 @@
 game.tick = () => {
-    canvas.clear();
-
     input.key.check();
     mouse.target.set();
 

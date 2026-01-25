@@ -8,7 +8,7 @@ class UI_moudle {
             height: undefined,
             width: undefined
         };
-        this.color = undefined;
+        this.color = "#ffffff";
         this.onMouse = undefined;
     }
 }

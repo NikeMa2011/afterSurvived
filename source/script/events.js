@@ -13,18 +13,26 @@ mouse.position.set = (event) => {
     mouse.position.y = event.clientY;
 };
 
+viewpoint.offset.set = () => {
+    viewpoint.offset.x = canvas.size.width - mouse.position.x;
+    viewpoint.offset.y = canvas.size.height - mouse.position.y;
+};
+
+viewpoint.position.set = () => {
+    viewpoint.position.x = objectSet.game.objects[0].position.x;
+    viewpoint.position.y = objectSet.game.objects[0].position.y;
+};
+
 input.key.check = () => {
     if (keySet["Escape"]) {
-        if (game.inGame) {
+        if (game.inMatch) {
             game.siteChange("normal");
-        } else if (
-            game.siteName == "map_choose" ||
-            game.siteName == "settings_graphic"
-        ) {
+        } else {
+            game.inGame = false;
+            game.status = "manu";
+
             game.siteChange("start");
         }
-    } else if (game.inGame) {
-
     }
 };
 
