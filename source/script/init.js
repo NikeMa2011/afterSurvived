@@ -1,5 +1,7 @@
 "use strict";
 
+titleDOM.innerHTML = "After Survived - Alpha Version";
+
 canvas.size.get();
 canvas.size.set();
 

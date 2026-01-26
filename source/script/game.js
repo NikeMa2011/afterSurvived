@@ -1,4 +1,4 @@
-game.tick = () => {
+game.tick = function() {
     input.key.check();
     mouse.target.set();
 
@@ -9,7 +9,7 @@ game.tick = () => {
     }, game.FPS.milisecond);
 };
 
-game.stringToFunction = (string) => {
+game.stringToFunction = function(string) {
     switch (string) {
         case "start":
             return UI.manu.start;
@@ -21,12 +21,14 @@ game.stringToFunction = (string) => {
             return UI.manu.settings.graphic;
         case "function_disable":
             return game.function.disable;
+        case "edit_image":
+            return UI.edit.image;
         default:
             return false;
     }
 }
 
-game.siteChange = (string) => {
+game.siteChange = function(string) {
     game.site = game.stringToFunction(string);
     game.siteName = string;
 
@@ -35,6 +37,6 @@ game.siteChange = (string) => {
     game.site();
 }
 
-game.function.disable = () => {
+game.function.disable = function() {
     alert("暂时没有此功能或者没有设置功能");
 }

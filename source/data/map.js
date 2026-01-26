@@ -14,7 +14,7 @@ const map = {
     }
 };
 
-map.hidePlace.load = () => {
+map.hidePlace.load = function() {
     objectSet.clear();
 
     game.inGame = true;

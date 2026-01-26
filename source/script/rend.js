@@ -1,4 +1,4 @@
-game.rend = () => {
+game.rend = function() {
     canvas.background();
 
     if (game.inGame) {
@@ -13,16 +13,17 @@ game.rend = () => {
 
 };
 
-canvas.background = () => {
+canvas.background = function() {
     canvas.color.set("#202020");
     canvasContext.fillRect(0, 0, canvas.size.width, canvas.size.height);
 };
 
-canvas.color.set = (color) => {
+canvas.color.set = function(color) {
     canvasContext.fillStyle = color;
+    canvasContext.strokeStyle = color;
 };
 
-mouse.target.set = () => {
+mouse.target.set = function() {
     mouse.target.current = undefined;
 
     for (let i = 0; i < objectSet.UI.length; i++) {
@@ -43,6 +44,6 @@ mouse.target.set = () => {
     }
 };
 
-game.FPS.set = () => {
+game.FPS.set = function() {
     game.FPS.milisecond = Math.round(1000 / game.FPS.value);
 }

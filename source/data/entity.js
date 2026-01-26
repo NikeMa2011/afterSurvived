@@ -98,20 +98,18 @@ class people extends entity {
     }
 
     draw() {
-        // console.log('aa')
-        
         canvas.color.set(this.color);
 
         canvasContext.fillRect(
             this.x - viewpoint.position.x + viewpoint.offset.x,
             this.y - viewpoint.position.y + viewpoint.offset.y,
-            this.height,
-            this.width
+            this.size.height,
+            this.size.width
         );
     }
 }
 
-gameObject.entity.player.create = () => {
+gameObject.entity.player.create = function() {
     let object = new people();
 
     object.ID = "gameObject.entity.player";

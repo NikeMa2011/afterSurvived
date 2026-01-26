@@ -1,4 +1,4 @@
-UI.option.add = (string, height, x, y, onclick, color) => {
+UI.option.add = function (string, height, x, y, onclick) {
     let object = new option();
 
     object.string = string;
@@ -11,7 +11,7 @@ UI.option.add = (string, height, x, y, onclick, color) => {
     objectSet.UI.add(object);
 };
 
-UI.banner.add = (string, height, x, y) => {
+UI.banner.add = function (string, height, x, y) {
     let object = new option();
 
     object.string = string;
@@ -23,7 +23,7 @@ UI.banner.add = (string, height, x, y) => {
     objectSet.UI.add(object);
 };
 
-UI.text.add = (string, height, x, y) => {
+UI.text.add = function (string, height, x, y) {
     let object = new text();
 
     object.string = string;
@@ -35,7 +35,7 @@ UI.text.add = (string, height, x, y) => {
     objectSet.UI.add(object);
 };
 
-UI.box.add = (width, height, x, y) => {
+UI.box.add = function (width, height, x, y) {
     let object = new box();
 
     object.size.width = width;
@@ -46,11 +46,23 @@ UI.box.add = (width, height, x, y) => {
     objectSet.UI.add(object);
 };
 
-UI.font.set = (height) => {
+UI.image.add = function (width, height, x, y, onclick) {
+    let object = new image();
+
+    object.size.width = width;
+    object.size.height = height;
+    object.position.x = x;
+    object.position.y = y;
+    onclick ? object.onclick = onclick : null;
+
+    objectSet.UI.add(object);
+};
+
+UI.font.set = function (height) {
     canvasContext.font = height + "px " + UI.font.famliy;
 };
 
-UI.manu.start = () => {
+UI.manu.start = function () {
     UI.option.add(
         "设置",
         UI.font.size.large,
@@ -83,14 +95,14 @@ UI.manu.start = () => {
     );
 
     UI.text.add(
-        "alpha 0.3.1",
+        "Alpha 0.3.1",
         UI.font.size.small,
         UI.padding,
         UI.padding
     );
 };
 
-UI.manu.normal = () => {
+UI.manu.normal = function () {
     UI.option.add(
         "设置",
         UI.font.size.large,
@@ -106,34 +118,81 @@ UI.manu.normal = () => {
     );
 };
 
-UI.manu.settings.graphic = () => {
+UI.manu.settings.graphic = function () {
     UI.banner.add(
-        "设置-图形",
-        UI.font.size.large,
-        canvas.size.width / 2 - 100,
-        UI.padding
+        canvas.size.width,
+        UI.font.size.large + UI.padding * 2,
+        0,
+        0
     );
 
     UI.text.add(
         "设置-图形",
         UI.font.size.large,
-        canvas.size.width / 2 - 100,
+        canvas.size.width / 2 - (UI.font.size.large * 5) / 2,
         UI.padding
     );
 };
 
-UI.manu.map = () => {
+UI.manu.map = function () {
     UI.text.add(
         "选择地图",
         UI.font.size.large,
-        canvas.size.width / 2 - 100,
+        canvas.size.width / 2 - (UI.font.size.large * 4) / 2,
         UI.padding
     );
 
     UI.option.add(
         "测试地图",
         UI.font.size.large,
-        canvas.size.width / 2 - 100,
+        canvas.size.width / 2 - (UI.font.size.large * 4) / 2,
         canvas.size.height / 2 - UI.font.size.large / 2
+    );
+};
+
+UI.edit.image = function () {
+    UI.text.add(
+        "图片编辑",
+        UI.font.size.large,
+        canvas.size.width - UI.padding - UI.font.size.large * 4,
+        UI.padding
+    );
+
+    UI.image.add(
+        1000,
+        1000,
+        0,
+        0,
+        function () {
+            if (
+                mouse.position.x == this.lastMousePosition.x &&
+                mouse.position.y == this.lastMousePosition.y
+            ) {
+                return;
+            }
+
+            this.lineSet.push(mouse.position.x);
+            this.lineSet.push(mouse.position.y);
+
+            this.lastMousePosition.x = mouse.position.x;
+            this.lastMousePosition.y = mouse.position.y;
+        }
+    );
+
+    UI.option.add(
+        "在控制台打印图片顶点路径",
+        UI.font.size.medium,
+        UI.padding,
+        1000 + UI.padding,
+        () => {
+            alert(JSON.stringify(objectSet.UI.objects[1].lineSet));
+        }
+    );
+
+    UI.text.add(
+        "图片顶点路径为两两一组, [x, y], 第一个值是X坐标, 第二个值是Y坐标",
+        UI.font.size.medium,
+        UI.padding,
+        1000 + UI.padding * 2 + UI.font.size.medium
     );
 };

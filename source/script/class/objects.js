@@ -10,6 +10,13 @@ class UI_moudle {
         };
         this.color = "#ffffff";
         this.onMouse = undefined;
+        this.onclick = undefined;
+    }
+
+    click() {
+        if (this.onclick) {
+            this.onclick();
+        }
     }
 }
 
@@ -56,10 +63,6 @@ class option extends UI_moudle {
         this.onclick = game.function.disable;
     }
 
-    click() {
-        this.onclick();
-    }
-
     draw() {
         if (this.onMouse) {
             canvas.color.set("#88888820");
@@ -97,5 +100,39 @@ class box extends UI_moudle {
             this.size.width,
             this.size.height
         );
+    }
+}
+
+class image extends UI_moudle {
+    constructor() {
+        super();
+
+        this.lineSet = [];
+        this.lastMousePosition = {
+            x: 0,
+            y: 0
+        };
+    }
+
+    draw() {
+        canvasContext.strokeRect(
+            this.position.x,
+            this.position.y,
+            this.size.width,
+            this.size.height
+        );
+
+        canvas.color.set(this.color);
+
+        canvasContext.beginPath();
+
+        for (let i = 0; i < this.lineSet.length; i+=2) {
+            canvasContext.lineTo(
+                this.position.x + this.lineSet[i],
+                this.position.y + this.lineSet[i + 1]
+            );
+        }
+
+        canvasContext.stroke();
     }
 }

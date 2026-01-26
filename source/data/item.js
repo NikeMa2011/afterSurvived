@@ -45,7 +45,7 @@ class weapon extends item {
     }
 }
 
-gameObject.item.waepon.rifle.assault.AK_74.create = () => {
+gameObject.item.waepon.rifle.assault.AK_74.create = function() {
     let object = new weapon();
 
     object.ID = "gameObject.item.waepon.rifle.assault.AK_74N";
@@ -85,7 +85,7 @@ gameObject.item.waepon.rifle.assault.AK_74.create = () => {
     return object;
 };
 
-gameObject.item.waepon.pistol.PM.create = () => {
+gameObject.item.waepon.pistol.PM.create = function() {
     let object = new weapon();
 
     object.ID = "gameObject.item.waepon.pistol.PM";
@@ -133,7 +133,7 @@ class ammo extends item {
 }
 
 
-gameObject.item.ammo.caliber_545x39_7N6.create = () => {
+gameObject.item.ammo.caliber_545x39_7N6.create = function() {
     let object = new ammo();
 
     object.ID = "gameObject.item.ammo.caliber_545x39_7N6";
@@ -157,7 +157,7 @@ gameObject.item.ammo.caliber_545x39_7N6.create = () => {
     return object;
 };
 
-gameObject.item.ammo.caliber_9x18_FMJ.create = () => {
+gameObject.item.ammo.caliber_9x18_FMJ.create = function() {
     let object = new ammo();
 
     object.ID = "gameObject.item.ammo.caliber_9x18";
@@ -191,7 +191,7 @@ class megazine extends item {
     }
 }
 
-gameObject.item.magazine.AKseries_545x39.create = () => {
+gameObject.item.magazine.AKseries_545x39.create = function() {
     let object = new megazine();
 
     object.ID = "gameObject.item.magazine.AKseries_545x39";
@@ -210,7 +210,7 @@ gameObject.item.magazine.AKseries_545x39.create = () => {
     object.size.depth = 1;
 };
 
-gameObject.item.magazine.PM_9x18.create = () => {
+gameObject.item.magazine.PM_9x18.create = function() {
     let object = new megazine();
 
     object.ID = "gameObject.item.magazine.PM_9x18";

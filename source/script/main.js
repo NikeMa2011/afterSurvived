@@ -80,7 +80,8 @@ const UI = {
     box: {},
     option: {},
     image: {},
-    banner: {}
+    banner: {},
+    edit: {}
 };
 
 const input = {
