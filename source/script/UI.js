@@ -180,12 +180,23 @@ UI.edit.image = function () {
     );
 
     UI.option.add(
+        "删除一组顶点",
+        UI.font.size.medium,
+        1000 + UI.padding,
+        UI.padding,
+        function() {
+            objectSet.UI.objects[1].lineSet.pop();
+            objectSet.UI.objects[1].lineSet.pop();
+        }
+    );
+
+    UI.option.add(
         "在控制台打印图片顶点路径",
         UI.font.size.medium,
         UI.padding,
         1000 + UI.padding,
         () => {
-            alert(JSON.stringify(objectSet.UI.objects[1].lineSet));
+            console.log(JSON.stringify(objectSet.UI.objects[1].lineSet));
         }
     );
 

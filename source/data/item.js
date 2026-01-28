@@ -32,30 +32,77 @@ class weapon extends item {
             full: undefined,
             current: undefined
         },
-            this.ammoUsed = undefined;
+        this.shoot = [];
+        this.ammoUsed = undefined;
         this.caliber = undefined;
         this.assessories = {};
         this.recoil = undefined;
         this.RPS = undefined;
         this.falut = {
             posibility: undefined,
-            yes: undefined
+            yes: false
         },
             this.accuracy = undefined;
     }
 }
 
-gameObject.item.waepon.rifle.assault.AK_74.create = function() {
+gameObject.item.waepon.rifle.assault.AKM.create = function() {
+    let object = new weapon();
+
+    object.ID = "gameObject.item.waepon.rifle.assault.AKM";
+    object.name = "AKM";
+    object.fullName = "AKM突击步枪(第三改进型)";
+    object.description = "由AK47改进而来, 护木/枪托/枪口/导气不一样, 三型AKM枪口有斜切口防跳, 依旧坚固可靠";
+
+    object.type = "assaultRife";
+
+    object.durability.maximum = object.durability.full = object.durability.current = 130;
+
+    object.shoot = [
+        safety = true,
+        single = false,
+        auto = false
+    ];
+
+    object.weight.single = 3000;
+
+    object.assessories = {
+        muzzle: undefined,
+        stock: undefined,
+        megazine: undefined,
+        grip: undefined,
+        forend: undefined,
+        cover: undefined
+    };
+
+    object.recoil = 4.2;
+    object.RPS = 10
+
+    object.caliber = "7.62x39";
+    object.falut.posibility = 0.4;
+
+    object.accuracy = 0.90;
+
+    return object;
+};
+
+gameObject.item.waepon.rifle.assault.AK_74N.create = function() {
     let object = new weapon();
 
     object.ID = "gameObject.item.waepon.rifle.assault.AK_74N";
-    object.name = "AK-74";
-    object.fullName = "AK-74突击步枪";
-    object.description = "AK-74突击步枪, 全称:\"1974年式卡拉什尼科夫自动步枪\", 是苏联在1970年代开始生产及装备的5.45x39mm小口径突击步枪, 至今仍然是许多前苏联成员国的制式步枪";
+    object.name = "AK-74N";
+    object.fullName = "AK-74N突击步枪";
+    object.description = "苏联人在看到越南战争中美军用的5.56mm口径子弹的综合性能后对自家AK进行改装的产物, 用的是自研的5.45mm, 有燕尾槽";
 
     object.type = "assaultRifle";
 
     object.durability.maximum = object.durability.full = object.durability.current = 130;
+
+    object.shoot = [
+        safety = true,
+        single = false,
+        auto = false
+    ];
 
     object.size.width = 5;
     object.size.height = 3;
@@ -77,10 +124,9 @@ gameObject.item.waepon.rifle.assault.AK_74.create = function() {
     object.RPS = 10
 
     object.caliber = "5.45x39";
-    object.falut.posibility = 0.3;
-    object.falut.yes = false;
+    object.falut.posibility = 0.4;
 
-    object.accuracy = 0.95;
+    object.accuracy = 0.92;
 
     return object;
 };
@@ -91,11 +137,16 @@ gameObject.item.waepon.pistol.PM.create = function() {
     object.ID = "gameObject.item.waepon.pistol.PM";
     object.name = "PM";
     object.fullName = "PM手枪";
-    object.description = "全称:\"马卡洛夫手枪\", 是一种俄罗斯制的半自动手枪, 此枪在1952年至1991年期间为苏联军队的制式手枪, 至今仍在使用";
+    object.description = "二战后苏联人总结发现手枪只是其实自卫武器, 所以开发了PM来替代TT-33, 用的9x18mm";
 
     object.type = "pistol";
 
     object.durability.maximum = object.durability.full = object.durability.current = 60;
+
+    object.shoot = [
+        safety = true,
+        single = false
+    ];
 
     object.size.width = 2;
     object.size.height = 2;
@@ -108,10 +159,9 @@ gameObject.item.waepon.pistol.PM.create = function() {
     };
 
     object.caliber = "9x18";
-    object.falut.posibility = 0.26;
-    object.falut.yes = false;
+    object.falut.posibility = 0.36;
 
-    object.accuracy = 0.92;
+    object.accuracy = 0.88;
 
     return object;
 };
@@ -160,10 +210,10 @@ gameObject.item.ammo.caliber_545x39_7N6.create = function() {
 gameObject.item.ammo.caliber_9x18_FMJ.create = function() {
     let object = new ammo();
 
-    object.ID = "gameObject.item.ammo.caliber_9x18";
+    object.ID = "gameObject.item.ammo.caliber_9x18_FMJ";
     object.name = "9x18";
     object.fullName = "9x18mm马卡洛夫弹药";
-    object.description = "9x18毫米(mm) 全金属披甲弹";
+    object.description = "9x18毫米(mm) FMJ 全金属披甲弹";
 
     object.size.height = object.size.width = object.size.depth = 1;
 
@@ -191,32 +241,51 @@ class megazine extends item {
     }
 }
 
-gameObject.item.magazine.AKseries_545x39.create = function() {
+gameObject.item.magazine.AKseries_545x39_30.create = function() {
     let object = new megazine();
 
-    object.ID = "gameObject.item.magazine.AKseries_545x39";
+    object.ID = "gameObject.item.magazine.AKseries_545x39_30";
     object.name = "AK弹匣";
-    object.fullName = "AK系列5.45x39mm子弹弹匣";
-    object.description = "为AK系列枪械设计的5.45x39mm子弹弹匣, 弹容量为30发";
+    object.fullName = "AK系列7.62x39mm子弹钢弹匣";
+    object.description = "为AK系列枪械设计的7.62x39mm子弹弹匣, 弹容量为30发";
     object.type = "megazine";
 
-    object.caliber = "545x39";
+    object.caliber = "762x39";
     object.maximumQuantity = 30;
 
-    object.wieght.single = 150;
+    object.wieght.single = 330;
 
     object.size.height = 2;
     object.size.width = 1;
     object.size.depth = 1;
 };
 
-gameObject.item.magazine.PM_9x18.create = function() {
+gameObject.item.magazine.AKseries_545x39_30.create = function() {
     let object = new megazine();
 
-    object.ID = "gameObject.item.magazine.PM_9x18";
+    object.ID = "gameObject.item.magazine.AKseries_545x39_30";
+    object.name = "AK弹匣";
+    object.fullName = "AK系列5.45x39mm子弹塑料弹匣";
+    object.description = "为AK系列枪械设计的5.45x39mm子弹弹匣, 弹容量为30发";
+    object.type = "megazine";
+
+    object.caliber = "545x39";
+    object.maximumQuantity = 30;
+
+    object.wieght.single = 230;
+
+    object.size.height = 2;
+    object.size.width = 1;
+    object.size.depth = 1;
+};
+
+gameObject.item.magazine.PM_9x18_8.create = function() {
+    let object = new megazine();
+
+    object.ID = "gameObject.item.magazine.PM_9x18_8";
     object.name = "PM弹匣";
     object.fullName = "PM手枪9x18mm子弹弹匣";
-    object.description = "为PM手枪设计的9x18mm子弹弹匣, 弹容量为8发";
+    object.description = "为PM系列设计的9x18mm子弹弹匣, 弹容量为8发";
     object.type = "megazine";
 
     object.caliber = "9x18";
