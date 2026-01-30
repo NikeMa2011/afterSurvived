@@ -20,7 +20,7 @@ const game = {
     siteName: undefined,
     inGame: undefined,
     inMatch: undefined,
-    version: undefined,
+    version: "pre-alpha 3.0.1",
     FPS: {
         value: 40,
         milisecond: undefined
@@ -71,7 +71,13 @@ const UI = {
             small: 18
         }
     },
+    color: {
+        white: "#ffffff",
+        dark: "#202020",
+        darkBackground: "#88888820"
+    },
     padding: 20,
+    edge: 5,
     text: {},
     manu: {
         settings: {}

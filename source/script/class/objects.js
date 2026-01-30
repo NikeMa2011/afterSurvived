@@ -8,7 +8,7 @@ class UI_moudle {
             height: undefined,
             width: undefined
         };
-        this.color = "#ffffff";
+        this.color = UI.color.white;
         this.onMouse = undefined;
         this.onclick = undefined;
     }
@@ -42,6 +42,8 @@ class text extends UI_moudle {
 class banner extends UI_moudle {
     constructor() {
         super();
+
+        this.color = ""
     }
 
     draw() {
@@ -65,13 +67,13 @@ class option extends UI_moudle {
 
     draw() {
         if (this.onMouse) {
-            canvas.color.set("#88888820");
+            canvas.color.set(UI.color.darkBackground);
 
             canvasContext.fillRect(
-                this.position.x,
-                this.position.y,
-                this.size.width,
-                this.size.height
+                this.position.x - UI.edge,
+                this.position.y - UI.edge,
+                this.size.width + UI.edge * 2,
+                this.size.height + UI.edge * 2
             );
         }
 
@@ -115,12 +117,9 @@ class image extends UI_moudle {
     }
 
     draw() {
-        canvasContext.strokeRect(
-            this.position.x,
-            this.position.y,
-            this.size.width,
-            this.size.height
-        );
+        if (this.lineSet.length == 0) {
+            return;
+        }
 
         canvas.color.set(this.color);
 

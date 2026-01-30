@@ -1,6 +1,6 @@
 "use strict";
 
-titleDOM.innerHTML = "After Survived - Alpha Version";
+titleDOM.innerHTML = "After Survived " + game.version;
 
 canvas.size.get();
 canvas.size.set();

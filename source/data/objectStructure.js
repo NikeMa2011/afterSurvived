@@ -102,7 +102,18 @@ const gameObject = {
             },
             melee: {
                 corssBar: {},
-
+                utilityKnife: {},
+                type_95: {},
+                M9: {},
+                mutiFunctionShovel: {}
+            },
+            throw: {
+                RGD_5: {},
+                M67: {},
+                M26: {},
+                type_86: {},
+                M18: {},
+                molotovCocktail: {},
             }
         },
         ammo: {
@@ -110,48 +121,157 @@ const gameObject = {
             caliber_545x39_7N22: {},
             caliber_545x39_7N24: {},
             caliber_545x39_7N39: {},
+
             caliber_9x18_FMJ: {},
+
             caliber_762x39_M43: {},
             caliber_762x39_M67: {},
             caliber_762x25_P: {},
             caliber_762x25_Pst: {},
+
             caliber_9x19_FMJ: {},
+
             caliber_556x45_M885: {},
             caliber_556x45_M885A1: {},
             caliber_556x45_M995AP: {},
+
             caliber_58x42_DBP10: {},
             caliber_58x42_DBP191: {},
+
             caliber_58x21_AP: {},
+
             caliber_9x39_SP5: {},
             caliber_9x39_SP6: {},
+
             caliber_762x54_7N1: {},
             caliber_762x54_7N14: {},
+
             caliber_762x51_M59: {},
             caliebr_762x51_M993: {},
+
             caliber_12Gauge: {},
+
             caliber_45ACP_FMJ: {},
             caliber_45ACP_JHP: {},
+
             caliber_57x28_SS190: {},
             caliber_57x28_SS195LF: {},
+
+            caliebr_46x30: {},
+            caliber_46x30_DM11: {},
+
             caliber_127x99_M2: {},
             caliber_127x99_M33: {},
             caliber_127x108_7N34: {},
+
+            caliber_30_06_M2: {},
+
+            caliber_338_SP: {},
+
             caliber_30x165_AP: {},
             caliber_25x137_M793: {},
             caliber_20x102_HE: {},
             caliber_145x114: {},
             caliber_125_3BM42: {},
-            caliber_30_06_M2: {},
-            caliber_338_SP: {},
-            caliber_46x30_DM11: {}
         },
         magazine: {
             AKseries_545x39_30: {},
             PM_9x18_8: {}
         },
         medical: {
-            bandage_yunNanBaiYao: {},
-            bandage_3M: {},
+            bandage: {
+                bandage_yunNanBaiYao: {},
+                bandage_3M: {},
+                amryBandage: {}
+            },
+            disinfect: {
+                saline: {},
+                medical75percentAlcohol: {},
+                iodophor: {},
+                hydrogenPeroxide: {}
+            },
+            surgery: {
+                surgeryForcep: {},
+                safeScissor: {},
+                skinstitcher: {}
+            },
+            painkill: {
+                ibuprofen: {},
+                aspirin: {},
+                morphine: {},
+                caffeine: {}
+            },
+            medicine: {
+                antibiotics: {},
+            },
+            inject: {
+                epinephrine: {}
+            }
         },
+        food: {
+            drink: {
+                cococola: {},
+                pepsi: {},
+                sprite: {},
+                fanta: {},
+
+                nongFuSpring: {},
+                baiSuiShan: {},
+
+                pocari: {},
+                monster: {},
+                redbull: {},
+
+                mirinda: {},
+                milk: {},
+
+                qingDaoBeer: {},
+                whisky: {},
+                vodka: {},
+            },
+            eat: {
+                snickers: {},
+                ham: {},
+                sausage: {},
+
+                doveChocolate: {},
+                boxOfSugar: {},
+                candy: {},
+                bread: {},
+                breakCube: {},
+                crackers: {},
+
+                weiLongSpicyStrips: {},
+                wangWangCracker: {},
+
+                douChiFishCan: {},
+                huangTaoCan: {},
+                lunchMeatCAn: {},
+                porkCan: {},
+                peaCan: {},
+                beefCan: {},
+
+                MRE: {},
+                iskra: {},
+                type_20: {},
+            }
+        },
+        electronic: {
+            nvidiaGraphicCard: {},
+            AMDgraphicCard: {},
+            intelCPU: {},
+            AMDCPU: {},
+            capacity: {},
+            mainBoard: {},
+            wire: {},
+            buzzer: {},
+            RAM: {},
+            HDD: {},
+            SSD: {},
+            CD: {},
+            powerSupply: {},
+            cooler: {},
+            
+        }
     }
 };

@@ -14,7 +14,7 @@ game.rend = function() {
 };
 
 canvas.background = function() {
-    canvas.color.set("#202020");
+    canvas.color.set(UI.color.dark);
     canvasContext.fillRect(0, 0, canvas.size.width, canvas.size.height);
 };
 

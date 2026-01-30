@@ -1,6 +1,6 @@
 "use strict";
 
-titleDOM.innerHTML = "After Survived Editer";
+titleDOM.innerHTML = "After Survived 编辑器";
 
 canvas.size.get();
 canvas.size.set();
