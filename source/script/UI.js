@@ -79,7 +79,7 @@ UI.manu.start = function () {
     );
 
     UI.option.add(
-        "藏身处",
+        "仓库",
         UI.font.size.large,
         UI.padding,
         canvas.size.height - (UI.padding + UI.font.size.large) * 2 - UI.padding - UI.font.size.large,

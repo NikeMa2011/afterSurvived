@@ -102,7 +102,6 @@ const gameObject = {
             },
             melee: {
                 corssBar: {},
-                utilityKnife: {},
                 type_95: {},
                 M9: {},
                 mutiFunctionShovel: {}
@@ -258,20 +257,94 @@ const gameObject = {
         },
         electronic: {
             nvidiaGraphicCard: {},
-            AMDgraphicCard: {},
             intelCPU: {},
             AMDCPU: {},
-            capacity: {},
+
             mainBoard: {},
-            wire: {},
-            buzzer: {},
             RAM: {},
             HDD: {},
             SSD: {},
             CD: {},
-            powerSupply: {},
+            CDdrive: {},
             cooler: {},
+            networkCard: {},
+
+            wire: {},
+            cable: {},
+            capacitor: {},
+            powerSuppler: {},
+            PCB: {},
+            relay: {},
+            resistor: {},
+
+            phoneLEDscreen: {},
+            laptopLEDscreen: {},
+
+            cylinderBattery: {},
+            carBattery: {},
+
+            charger: {},
+            powerBank: {},
+
+            encryptedUSBdrive: {},
+
+            touchBorad: {},
+            mouse: {},
+
+            macLaptop: {},
+            lenovoLaptop: {},
+
+            Iphone: {},
+            huaweiPhone: {},
+
+            Ipods: {},
+            huaweiEarPhone: {},
+            headPhone: {},
+
+            appleWatch: {},
+            huaweiWatch: {},
+
+            calculator: {}
+        },
+        other: {
+            wrench: {},
+            screwDriver: {},
+            pilers: {},
+            forcep: {},
+            motor: {},
+            industrialMotor: {},
+            electricDriller: {},
+            airFilter: {},
+            waterFilter: {},
+            measureRoll: {},
+            ruler: {},
+            hammer: {},
+
+            screw: {},
+            bolt: {},
+            glue_502: {},
+            tape_transparent: {},
+            tape_3M: {},
+            nut: {},
+            rope: {},
+            nail: {},
+            PVCtube: {},
+            rubberTube: {},
+            gunPower: {},
+
+            thermometer: {},
+            barometer: {},
+            WD_40: {},
+            energySafeLamp: {},
+            UVlamp: {},
+            blub: {},
+            magnet: {},
+        },
+        intelligence: {
             
+        },
+        keys: {
+
         }
     }
 };
