@@ -11,7 +11,7 @@ class UI_moudle {
         this.color = UI.color.white;
         this.onMouse = undefined;
         this.onMouseFunction = undefined;
-        this.onClickFunction = () => game.function.disable();
+        this.onClickFunction = undefined;
     }
 
     click() {
@@ -143,6 +143,7 @@ class image extends UI_moudle {
         super();
 
         this.lineSet = [];
+        this.currentLine = 0;
         this.lastMousePosition = {
             x: 0,
             y: 0
@@ -156,17 +157,17 @@ class image extends UI_moudle {
 
         canvas.color.set(this.color);
 
-        canvasContext.beginPath();
-
         for (let i = 0; i < this.lineSet.length; i ++) {
-            for (let j = 0; j < this.lineSet.length; j += 2) {
+            canvasContext.beginPath();
+
+            for (let j = 0; j < this.lineSet[i].length; j += 2) {
                 canvasContext.lineTo(
                     this.position.x + this.lineSet[i][j],
                     this.position.y + this.lineSet[i][j + 1]
                 );
             }
-        }
 
-        canvasContext.stroke();
+            canvasContext.stroke();
+        }
     }
 }

@@ -42,7 +42,7 @@ UI.text.add = function (string, height, x, y) {
 
     objectSet.UI.add(object);
 };
-UI.box.add = function (string, width, height, x, y) {
+UI.box.add = function (string, width, height, x, y, onClickFunction) {
     let object = new box();
 
     object.string = string;
@@ -50,6 +50,7 @@ UI.box.add = function (string, width, height, x, y) {
     object.size.height = height;
     object.position.x = x;
     object.position.y = y;
+    onClickFunction ? object.onClickFunction : null;
 
     objectSet.UI.add(object);
 };
@@ -187,7 +188,7 @@ UI.edit.image = function () {
         1000,
         0,
         0,
-        [],
+        [[]],
         function () {
             if (
                 mouse.position.x == this.lastMousePosition.x &&
@@ -196,8 +197,8 @@ UI.edit.image = function () {
                 return;
             }
 
-            this.lineSet.push(mouse.position.x);
-            this.lineSet.push(mouse.position.y);
+            this.lineSet[this.currentLine].push(mouse.position.x);
+            this.lineSet[this.currentLine].push(mouse.position.y);
 
             this.lastMousePosition.x = mouse.position.x;
             this.lastMousePosition.y = mouse.position.y;
@@ -223,15 +224,31 @@ UI.edit.image = function () {
     );
     UI.option.add(
         "新镇一条线",
-                UI.font.size.medium,
+        UI.font.size.medium,
         objectSet.UI.objects[2].size.width + UI.gaps.padding,
         UI.gaps.padding + UI.font.size.medium + UI.gaps.gap,
+        function () {
+            objectSet.UI.objects[1].lineSet.push([]);
+
+            objectSet.UI.objects[1].currentLine++;
+        }
     );
     UI.option.add(
         "删除一条线",
-                UI.font.size.medium,
+        UI.font.size.medium,
         objectSet.UI.objects[2].size.width + UI.gaps.padding,
         UI.gaps.padding + (UI.font.size.medium + UI.gaps.gap) * 2,
+        function () {
+            if (objectSet.UI.objects[1].currentLine < 0) {
+                alert("现在只剩一条线了");
+
+                return;
+            }
+
+            objectSet.UI.objects[1].lineSet.pop([undefined]);
+
+            objectSet.UI.objects[1].currentLine--;
+        }
     );
     UI.option.add(
         "图片位置校正",
@@ -279,7 +296,7 @@ UI.edit.image = function () {
             objectSet.UI.objects[1].size.height = objectSet.UI.objects[2].size.height;
         }
     );
-        UI.option.add(
+    UI.option.add(
         "获取图片大小",
         UI.font.size.medium,
         objectSet.UI.objects[2].size.width + UI.gaps.padding,
@@ -291,12 +308,14 @@ UI.edit.image = function () {
             };
 
             for (let i = 0; i < objectSet.UI.objects[1].lineSet.length; i += 2) {
-                if (objectSet.UI.objects[1].lineSet[i] > minimumSize.x) {
-                    minimumSize.x = objectSet.UI.objects[1].lineSet[i];
-                }
+                for (let j = 0; j < objectSet.UI.objects[1].lineSet[i].length; j += 2) {
+                    if (objectSet.UI.objects[1].lineSet[i][j] > minimumSize.x) {
+                        minimumSize.x = objectSet.UI.objects[1].lineSet[i][j];
+                    }
 
-                if (objectSet.UI.objects[1].lineSet[i + 1] > minimumSize.y) {
-                    minimumSize.y = objectSet.UI.objects[1].lineSet[i + 1];
+                    if (objectSet.UI.objects[1].lineSet[i][j + 1] > minimumSize.y) {
+                        minimumSize.y = objectSet.UI.objects[1].lineSet[i][j + 1];
+                    }
                 }
             }
 
@@ -323,7 +342,7 @@ UI.edit.image = function () {
         objectSet.UI.objects[2].size.width + UI.gaps.edge + UI.font.size.medium + UI.gaps.padding
     );
     UI.text.add(
-        "例: [20,20,40,40], 从X:20,Y:20到X:40,y:40",
+        "所有线的存储为this.lineSet, 单个线为this.lineSet[线的索引], lineSet为二维数组",
         UI.font.size.medium,
         UI.gaps.padding,
         objectSet.UI.objects[2].size.width + UI.gaps.edge * 2 + UI.font.size.medium * 2 + UI.gaps.padding

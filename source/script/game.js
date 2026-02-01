@@ -32,7 +32,7 @@ game.stringToFunction = function(string) {
         default:
             return false;
     }
-}
+};
 
 game.siteChange = function(string) {
     game.site = game.stringToFunction(string);
@@ -41,8 +41,4 @@ game.siteChange = function(string) {
     objectSet.clear();
 
     game.site();
-}
-
-game.function.disable = function() {
-    alert("暂时没有此功能或者没有设置功能");
-}
+};
