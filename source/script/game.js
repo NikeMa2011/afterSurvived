@@ -27,6 +27,8 @@ game.stringToFunction = function(string) {
             return UI.game.accountSetName;
         case "accountSet_faction":
             return UI.game.accountSetFaction;
+        case "repository":
+            return UI.game.repository;
         default:
             return false;
     }

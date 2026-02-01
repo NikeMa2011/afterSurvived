@@ -5,7 +5,7 @@ titleDOM.innerHTML = "After Survived " + game.version;
 canvas.size.get();
 canvas.size.set();
 
-canvasContext.textBaseline = "hanging";
+canvasContext.textBaseline = "top";
 
 game.FPS.set();
 

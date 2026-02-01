@@ -1,7 +1,6 @@
 const map = {
     test: {},
     tourial: {},
-    hidePlace: {},
     play: {
         outerSuburb: {},
         innerSuburb: {},
@@ -14,7 +13,7 @@ const map = {
     }
 };
 
-map.hidePlace.load = function() {
+map.test.load = function() {
     objectSet.clear();
 
     game.inGame = true;

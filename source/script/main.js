@@ -20,7 +20,7 @@ const game = {
     siteName: undefined,
     inGame: undefined,
     inMatch: undefined,
-    version: "pre-alpha 3.0.1",
+    version: "pre-alpha 1.0.1",
     FPS: {
         value: 40,
         milisecond: undefined
@@ -77,8 +77,11 @@ const UI = {
         dark: "#202020",
         darkBackground: "#88888820"
     },
-    padding: 20,
-    edge: 5,
+    gaps: {
+        gap: 20,
+        padding: 50,
+        edge: 10
+    },
     text: {},
     manu: {
         settings: {}
@@ -89,7 +92,7 @@ const UI = {
     image: {},
     banner: {},
     edit: {},
-    line: {},
+    square: {},
     game: {
         inventory: {},
     }

@@ -11,7 +11,7 @@ class UI_moudle {
         this.color = UI.color.white;
         this.onMouse = undefined;
         this.onMouseFunction = undefined;
-        this.onClickFunction = undefined;
+        this.onClickFunction = () => game.function.disable();
     }
 
     click() {
@@ -77,10 +77,10 @@ class option extends UI_moudle {
             canvas.color.set(UI.color.darkBackground);
 
             canvasContext.fillRect(
-                this.position.x - UI.edge,
-                this.position.y - UI.edge,
-                this.size.width + UI.edge * 2,
-                this.size.height + UI.edge * 2
+                this.position.x - UI.gaps.edge,
+                this.position.y - UI.gaps.edge,
+                this.size.width + UI.gaps.edge * 2,
+                this.size.height + UI.gaps.edge * 2
             );
         }
 
@@ -107,8 +107,8 @@ class box extends UI_moudle {
 
             canvasContext.fillText(
                 this.string,
-                this.position.x + UI.edge,
-                this.position.y + UI.edge
+                this.position.x + UI.gaps.edge,
+                this.position.y + UI.gaps.edge
             );
         }
 
