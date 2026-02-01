@@ -158,11 +158,13 @@ class image extends UI_moudle {
 
         canvasContext.beginPath();
 
-        for (let i = 0; i < this.lineSet.length; i += 2) {
-            canvasContext.lineTo(
-                this.position.x + this.lineSet[i],
-                this.position.y + this.lineSet[i + 1]
-            );
+        for (let i = 0; i < this.lineSet.length; i ++) {
+            for (let j = 0; j < this.lineSet.length; j += 2) {
+                canvasContext.lineTo(
+                    this.position.x + this.lineSet[i][j],
+                    this.position.y + this.lineSet[i][j + 1]
+                );
+            }
         }
 
         canvasContext.stroke();

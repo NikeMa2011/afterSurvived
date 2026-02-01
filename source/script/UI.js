@@ -53,7 +53,7 @@ UI.box.add = function (string, width, height, x, y) {
 
     objectSet.UI.add(object);
 };
-UI.image.add = function (width, height, x, y, path, onclick) {
+UI.image.add = function (width, height, x, y, path, onClickFunction) {
     let object = new image();
 
     object.size.width = width;
@@ -61,7 +61,7 @@ UI.image.add = function (width, height, x, y, path, onclick) {
     object.position.x = x;
     object.position.y = y;
     path ? object.lineSet = path : null;
-    onclick ? object.onclick = onclick : null;
+    onClickFunction ? object.onClickFunction = onClickFunction : null;
 
     objectSet.UI.add(object);
 };
@@ -111,6 +111,15 @@ UI.manu.start = function () {
         UI.font.size.small,
         canvas.size.width - UI.gaps.padding - UI.font.size.small * 19,
         UI.gaps.padding
+    );
+    UI.option.add(
+        "Github仓库链接: https://github.com/NikeMa2011/afterSurvived",
+        UI.font.size.small,
+        canvas.size.width - UI.gaps.padding - UI.font.size.small * 31.5,
+        UI.gaps.padding + UI.gaps.edge + UI.font.size.small,
+        function () {
+            window.open("https://github.com/NikeMa2011/afterSurvived");
+        }
     );
 };
 
@@ -213,10 +222,22 @@ UI.edit.image = function () {
         }
     );
     UI.option.add(
+        "新镇一条线",
+                UI.font.size.medium,
+        objectSet.UI.objects[2].size.width + UI.gaps.padding,
+        UI.gaps.padding + UI.font.size.medium + UI.gaps.gap,
+    );
+    UI.option.add(
+        "删除一条线",
+                UI.font.size.medium,
+        objectSet.UI.objects[2].size.width + UI.gaps.padding,
+        UI.gaps.padding + (UI.font.size.medium + UI.gaps.gap) * 2,
+    );
+    UI.option.add(
         "图片位置校正",
         UI.font.size.medium,
         objectSet.UI.objects[2].size.width + UI.gaps.padding,
-        UI.gaps.padding + UI.font.size.medium + UI.gaps.gap,
+        UI.gaps.padding + (UI.font.size.medium + UI.gaps.gap) * 3,
         function () {
             let minimumPosition = {
                 x: objectSet.UI.objects[2].size.width,
@@ -240,10 +261,29 @@ UI.edit.image = function () {
         }
     );
     UI.option.add(
+        "设置图片大小",
+        UI.font.size.medium,
+        objectSet.UI.objects[2].size.width + UI.gaps.padding,
+        UI.gaps.padding + (UI.font.size.medium + UI.gaps.gap) * 4,
+        function () {
+            for (let i = 0; i < objectSet.UI.objects[1].lineSet.length; i += 2) {
+                objectSet.UI.objects[1].lineSet[i] = Math.floor(
+                    objectSet.UI.objects[2].size.width * (objectSet.UI.objects[1].lineSet[i] / objectSet.UI.objects[1].size.width)
+                );
+                objectSet.UI.objects[1].lineSet[i + 1] = Math.floor(
+                    objectSet.UI.objects[2].size.height * (objectSet.UI.objects[1].lineSet[i + 1] / objectSet.UI.objects[1].size.height)
+                );
+            }
+
+            objectSet.UI.objects[1].size.width = objectSet.UI.objects[2].size.width;
+            objectSet.UI.objects[1].size.height = objectSet.UI.objects[2].size.height;
+        }
+    );
+        UI.option.add(
         "获取图片大小",
         UI.font.size.medium,
         objectSet.UI.objects[2].size.width + UI.gaps.padding,
-        UI.gaps.padding + (UI.font.size.medium + UI.gaps.gap) * 2,
+        UI.gaps.padding + (UI.font.size.medium + UI.gaps.gap) * 5,
         function () {
             let minimumSize = {
                 x: 0,
@@ -264,25 +304,6 @@ UI.edit.image = function () {
             objectSet.UI.objects[1].size.height = minimumSize.y;
 
             alert("图片大小: X = " + minimumSize.x + "px; Y = " + minimumSize.y + ';');
-        }
-    );
-    UI.option.add(
-        "设置图片大小",
-        UI.font.size.medium,
-        objectSet.UI.objects[2].size.width + UI.gaps.padding,
-        UI.gaps.padding + (UI.font.size.medium + UI.gaps.gap) * 3,
-        function () {
-            for (let i = 0; i < objectSet.UI.objects[1].lineSet.length; i += 2) {
-                objectSet.UI.objects[1].lineSet[i] = Math.floor(
-                    objectSet.UI.objects[2].size.width * (objectSet.UI.objects[1].lineSet[i] / objectSet.UI.objects[1].size.width)
-                );
-                objectSet.UI.objects[1].lineSet[i + 1] = Math.floor(
-                    objectSet.UI.objects[2].size.height * (objectSet.UI.objects[1].lineSet[i + 1] / objectSet.UI.objects[1].size.height)
-                );
-            }
-
-            objectSet.UI.objects[1].size.width = objectSet.UI.objects[2].size.width;
-            objectSet.UI.objects[1].size.height = objectSet.UI.objects[2].size.height;
         }
     );
 
