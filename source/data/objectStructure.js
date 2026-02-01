@@ -62,9 +62,10 @@ const gameObject = {
                     PPSh_41: {},
                     PPS_43: {},
                     QBZ_95B: {},
-                    JH_16: {},
-                    type_85: {},
+                    QCQ_171: {},
                     type_79: {},
+                    type_85: {},
+                    CSLR_7: {},
                     M3: {}
                 },
                 machineGun: {
@@ -73,7 +74,6 @@ const gameObject = {
                     RPDN: {},
                     RPK_16: {},
                     QJB_95: {},
-                    type_81: {},
                     MG3: {}
                 },
                 shotGun: {
@@ -306,7 +306,7 @@ const gameObject = {
 
             calculator: {}
         },
-        other: {
+        mechanic: {
             wrench: {},
             screwDriver: {},
             pilers: {},
@@ -320,6 +320,15 @@ const gameObject = {
             ruler: {},
             hammer: {},
 
+            thermometer: {},
+            barometer: {},
+            WD_40: {},
+            energySafeLamp: {},
+            UVlamp: {},
+            blub: {}
+        },
+        material: {
+            magnet: {},
             screw: {},
             bolt: {},
             glue_502: {},
@@ -330,20 +339,16 @@ const gameObject = {
             nail: {},
             PVCtube: {},
             rubberTube: {},
-            gunPower: {},
-
-            thermometer: {},
-            barometer: {},
-            WD_40: {},
-            energySafeLamp: {},
-            UVlamp: {},
-            blub: {},
-            magnet: {},
+            metalTube: {},
+            gunPower: {}
         },
         intelligence: {
-            
+
         },
         keys: {
+
+        },
+        other: {
 
         }
     }

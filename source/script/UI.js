@@ -1,4 +1,4 @@
-UI.option.add = function (string, height, x, y, onclick) {
+UI.option.add = function (string, height, x, y, onClickFunction, onMouseFunction) {
     let object = new option();
 
     object.string = string;
@@ -6,13 +6,25 @@ UI.option.add = function (string, height, x, y, onclick) {
     object.size.height = height;
     object.position.x = x;
     object.position.y = y;
-    onclick ? object.onclick = onclick : null;
+    onClickFunction ? object.onClickFunction = onClickFunction : null;
+    onMouseFunction ? object.onMouseFunction = onMouseFunction : null;
 
     objectSet.UI.add(object);
 };
 
 UI.banner.add = function (width, height, x, y) {
     let object = new banner();
+
+    object.size.width = width;
+    object.size.height = height;
+    object.position.x = x;
+    object.position.y = y;
+
+    objectSet.UI.add(object);
+};
+
+UI.square.add = function (width, height, x, y) {
+    let object = new square();
 
     object.size.width = width;
     object.size.height = height;
@@ -34,9 +46,10 @@ UI.text.add = function (string, height, x, y) {
     objectSet.UI.add(object);
 };
 
-UI.box.add = function (width, height, x, y) {
+UI.box.add = function (string, width, height, x, y) {
     let object = new box();
 
+    object.string = string;
     object.size.width = width;
     object.size.height = height;
     object.position.x = x;
@@ -98,6 +111,13 @@ UI.manu.start = function () {
         game.version,
         UI.font.size.small,
         UI.padding,
+        UI.padding
+    );
+
+    UI.text.add(
+        "为了游戏的稳定 请尽量不要打开开发者工具",
+        UI.font.size.small,
+        canvas.size.width - UI.padding - UI.font.size.small * 19,
         UI.padding
     );
 };
@@ -162,6 +182,14 @@ UI.edit.image = function () {
         UI.padding
     );
 
+    UI.box.add(
+        "画布",
+        1000,
+        1000,
+        0,
+        0
+    ); 
+
     UI.image.add(
         1000,
         1000,
@@ -182,13 +210,6 @@ UI.edit.image = function () {
             this.lastMousePosition.x = mouse.position.x;
             this.lastMousePosition.y = mouse.position.y;
         }
-    );
-
-    UI.box.add(
-        1000,
-        1000,
-        0,
-        0
     );
 
     UI.option.add(
@@ -302,3 +323,117 @@ UI.edit.image = function () {
         objectSet.UI.objects[2].size.width + UI.padding * 3 + UI.font.size.medium * 2
     );
 };
+
+UI.game.accountSetName = function () {
+    UI.text.add(
+        "账号创建",
+        UI.font.size.large,
+        (canvas.size.width - UI.font.size.large * 4) / 2,
+        UI.padding
+    );
+
+    UI.text.add(
+        "请输入你的名字",
+        UI.font.size.big,
+        (canvas.size.width - UI.font.size.big * 7) / 2,
+        canvas.size.height / 2 - UI.font.size.big
+    );
+
+    UI.text.add(
+        "undefined",
+        UI.font.size.big,
+        (canvas.size.width - UI.font.size.big * 5) / 2,
+        canvas.size.height / 2 + UI.font.size.big
+    );
+
+    UI.option.add(
+        "下一步",
+        UI.font.size.big,
+        (canvas.size.width - UI.font.size.big * 3) / 2,
+        canvas.size.height - canvas.size.height / 4,
+        function () {
+            user.name = "undefined";
+
+            game.siteChange("accountSet_faction");
+        }
+    );
+}
+
+UI.game.accountSetFaction = function () {
+    UI.text.add(
+        "选择阵营",
+        UI.font.size.large,
+        (canvas.size.width - UI.font.size.large * 4) / 2,
+        UI.padding,
+    );
+
+    UI.option.add(
+        "以中国和俄罗斯为首的联盟",
+        UI.font.size.big,
+        canvas.size.width / 4 - (UI.font.size.big * 12) / 2,
+        canvas.size.height / 4 - UI.font.size.big / 2,
+        function () {
+            user.faction = "CRUF";
+
+            game.siteChange("start");
+        },
+        function () {
+            objectSet.UI.objects[3].string = "CRUF (China and Russia United Force, 中俄联合力量) 是以中国和俄罗斯为首的联合军事力量";
+            objectSet.UI.objects[4].string = "用于反击北大西洋联合力量对中华人民共和国和俄罗斯联邦的领土入侵以及调查三都爆炸事件";
+        }
+    );
+
+    UI.option.add(
+        "以北约为首的联盟",
+        UI.font.size.big,
+        canvas.size.width - canvas.size.width / 4 - (UI.font.size.big * 8) / 2,
+        canvas.size.height / 4 - UI.font.size.big / 2,
+        function () {
+            user.faction = "NAUF";
+
+            game.siteChange("start");
+        },
+        function () {
+            objectSet.UI.objects[3].string = "NAUF (North Atlantic United Force, 北大西洋联合力量) 是以北约(NATO)为首的的联合军事力量";
+            objectSet.UI.objects[4].string = "用于入侵中国人民共和国和俄罗斯联邦及其他国家的领土搜寻有关三都爆炸事件的线索";
+        }
+    );
+
+    UI.text.add(
+        "",
+        UI.font.size.medium,
+        UI.padding,
+        canvas.size.height - UI.padding - UI.font.size.medium * 2,
+    );
+
+    UI.text.add(
+        "",
+        UI.font.size.medium,
+        UI.padding,
+        canvas.size.height - UI.padding - UI.font.size.medium,
+    );
+}
+
+UI.game.gear = function () {
+    UI.box.add(
+        "头盔",
+        200,
+        200,
+        ((canvas.size.width - UI.padding * 2) / 3) / 2 - 100,
+        100 + UI.padding
+    );
+
+    UI.box.add(
+        "耳机",
+        200,
+        200,
+        (canvas.size.width - UI.padding * 2) / 3 - ((canvas.size.width - UI.padding * 2) / 3) / 4 - 100,
+        100 + UI.padding
+    );
+
+    UI.
+}
+
+UI.game.repository = function () {
+
+}

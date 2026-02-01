@@ -67,6 +67,7 @@ const UI = {
         size: {
             extremeBig: 100,
             large: 50,
+            big: 30,
             medium: 20,
             small: 18
         }
@@ -87,7 +88,11 @@ const UI = {
     option: {},
     image: {},
     banner: {},
-    edit: {}
+    edit: {},
+    line: {},
+    game: {
+        inventory: {},
+    }
 };
 
 const input = {
@@ -97,6 +102,7 @@ const input = {
 
 const user = {
     name: "undefined",
+    faction: undefined,
     progress: {
         achievement: {},
     },

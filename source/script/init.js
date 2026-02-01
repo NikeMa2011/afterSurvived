@@ -12,6 +12,6 @@ game.FPS.set();
 game.inGame = false;
 game.status = "manu";
 
-game.siteChange("start");
+game.siteChange("accountSet_name");
 
 game.tick();

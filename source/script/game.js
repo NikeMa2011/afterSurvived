@@ -23,6 +23,10 @@ game.stringToFunction = function(string) {
             return game.function.disable;
         case "edit_image":
             return UI.edit.image;
+        case "accountSet_name":
+            return UI.game.accountSetName;
+        case "accountSet_faction":
+            return UI.game.accountSetFaction;
         default:
             return false;
     }

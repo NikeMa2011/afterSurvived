@@ -10,12 +10,19 @@ class UI_moudle {
         };
         this.color = UI.color.white;
         this.onMouse = undefined;
-        this.onclick = undefined;
+        this.onMouseFunction = undefined;
+        this.onClickFunction = undefined;
     }
 
     click() {
-        if (this.onclick) {
-            this.onclick();
+        if (this.onClickFunction) {
+            this.onClickFunction();
+        }
+    }
+
+    mouse() {
+        if (this.onMouse) {
+            this.onMouseFunction();
         }
     }
 }
@@ -43,7 +50,7 @@ class banner extends UI_moudle {
     constructor() {
         super();
 
-        this.color = ""
+        this.color = "";
     }
 
     draw() {
@@ -95,6 +102,32 @@ class box extends UI_moudle {
 
     draw() {
         canvas.color.set(this.color);
+        if (this.string) {
+            UI.font.set(UI.font.size.small);
+
+            canvasContext.fillText(
+                this.string,
+                this.position.x + UI.edge,
+                this.position.y + UI.edge
+            );
+        }
+
+        canvasContext.strokeRect(
+            this.position.x,
+            this.position.y,
+            this.size.width,
+            this.size.height
+        );
+    }
+}
+
+class square extends UI_moudle {
+    constructor() {
+        super();
+    }
+
+    draw() {
+        canvas.color.set(this.color);
 
         canvasContext.strokeRect(
             this.position.x,
@@ -125,7 +158,7 @@ class image extends UI_moudle {
 
         canvasContext.beginPath();
 
-        for (let i = 0; i < this.lineSet.length; i+=2) {
+        for (let i = 0; i < this.lineSet.length; i += 2) {
             canvasContext.lineTo(
                 this.position.x + this.lineSet[i],
                 this.position.y + this.lineSet[i + 1]

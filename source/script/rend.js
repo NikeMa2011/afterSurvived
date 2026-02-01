@@ -38,6 +38,9 @@ mouse.target.set = function() {
             }
 
             objectSet.UI.objects[i].onMouse = true;
+            if (objectSet.UI.objects[i].onMouseFunction) {
+                objectSet.UI.objects[i].onMouseFunction();
+            }
         } else {
             objectSet.UI.objects[i].onMouse = false;
         }
