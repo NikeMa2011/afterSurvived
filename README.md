@@ -14,7 +14,7 @@ whole game is developed by me so if there is any questions welcome to help me
 > 所使用的维基列表: wikipidia, pewpewpew.work, baidubaike<br>
 > the wikis I use: wikipeida/pewpewpew.work(chinese)/baidubaike(chinese)
 
-⚠Notice: since this game is still a prorotype I just add the chinese so sorry bro
+⚠Notice: since this game is still a prototype I just add the chinese so sorry bro
 
 大佬star呗 球球了 ![如果你看到这段文字说明图片没有导入](assets/image/markdown/黄豆人伤心低头手朝下.png "黄豆人伤心低头手朝下.png")
 
