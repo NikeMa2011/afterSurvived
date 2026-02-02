@@ -21,16 +21,6 @@ UI.banner.add = function (width, height, x, y) {
 
     objectSet.UI.add(object);
 };
-UI.square.add = function (width, height, x, y) {
-    let object = new square();
-
-    object.size.width = width;
-    object.size.height = height;
-    object.position.x = x;
-    object.position.y = y;
-
-    objectSet.UI.add(object);
-};
 UI.text.add = function (string, height, x, y) {
     let object = new text();
 
@@ -65,6 +55,19 @@ UI.image.add = function (width, height, x, y, path, onClickFunction) {
     onClickFunction ? object.onClickFunction = onClickFunction : null;
 
     objectSet.UI.add(object);
+};
+UI.game.inventory.space.add = function (width, height, x, y) {
+    for (let i = 0; i > width; i++) {
+        for (let i = 0; i > height; i++) {
+            UI.box.add(
+                undefined,
+                50,
+                50,
+                x + 50 * i,
+                y + 50 * i
+            );
+        }
+    }
 };
 
 UI.font.set = function (height) {
@@ -191,6 +194,8 @@ UI.edit.image = function () {
         [[]],
         function () {
             if (
+                mouse.position.x > 1000 ||
+                mouse.position.y > 1000 ||
                 mouse.position.x == this.lastMousePosition.x &&
                 mouse.position.y == this.lastMousePosition.y
             ) {
@@ -486,6 +491,39 @@ UI.game.gear = function () {
         160,
         UI.gaps.padding + 245 + UI.gaps.edge,
         100 + UI.gaps.padding + (UI.gaps.edge + 160) * 3
+    );
+
+    UI.box.add(
+        "弹挂",
+        160,
+        160,
+        UI.gaps.padding + 500 + UI.gaps.padding,
+        100 + UI.gaps.padding
+    );
+    UI.game.inventory.space.add(
+        1,
+        1,
+            
+    );
+    UI.box.add(
+        "背包",
+        160,
+        160,
+        UI.gaps.padding + 500 + UI.gaps.padding,
+        100 + UI.gaps.padding + (160 + UI.gaps.edge) * 2
+    );
+
+    UI.banner.add(
+        canvas.size.width,
+        100 + UI.gaps.padding,
+        0,
+        0
+    );
+    UI.banner.add(
+        canvas.size.width,
+        100 + UI.gaps.padding,
+        0,
+        100 + UI.gaps.padding + 640 + UI.gaps.edge * 3
     );
 
     UI.box.add(

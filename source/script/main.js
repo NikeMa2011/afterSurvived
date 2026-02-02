@@ -92,9 +92,10 @@ const UI = {
     image: {},
     banner: {},
     edit: {},
-    square: {},
     game: {
-        inventory: {},
+        inventory: {
+            space: {}
+        },
     }
 };
 
@@ -108,6 +109,12 @@ const user = {
     faction: undefined,
     progress: {
         achievement: {},
+        repository: {
+            size: {
+                height: 32,
+                width: 8
+            }
+        }
     },
     settings: {
         keyBind: {

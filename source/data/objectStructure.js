@@ -22,7 +22,7 @@ const gameObject = {
                     M4A1: {},
                     SCAR_L: {},
                     SCAR_H: {},
-                    HK_416: {},
+                    M7: {},
                     MCX: {},
                     G36: {},
                     G3: {},
@@ -328,6 +328,7 @@ const gameObject = {
             blub: {}
         },
         material: {
+            shanpoo: {},
             magnet: {},
             screw: {},
             bolt: {},
@@ -340,7 +341,10 @@ const gameObject = {
             PVCtube: {},
             rubberTube: {},
             metalTube: {},
-            gunPower: {}
+            gunPower: {},
+            fabric: {},
+            matelSheet: {},
+            
         },
         intelligence: {
 

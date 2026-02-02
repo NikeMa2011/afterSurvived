@@ -50,7 +50,7 @@ class banner extends UI_moudle {
     constructor() {
         super();
 
-        this.color = "";
+        this.color = UI.color.dark;
     }
 
     draw() {
@@ -102,6 +102,8 @@ class box extends UI_moudle {
 
     draw() {
         canvas.color.set(this.color);
+
+        
         if (this.string) {
             UI.font.set(UI.font.size.small);
 
