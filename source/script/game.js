@@ -1,4 +1,4 @@
-game.tick = function() {
+game.tick = function () {
     input.key.check();
     mouse.target.set();
 
@@ -9,7 +9,7 @@ game.tick = function() {
     }, game.FPS.milisecond);
 };
 
-game.stringToFunction = function(string) {
+game.stringToFunction = function (string) {
     switch (string) {
         case "start":
             return UI.manu.start;
@@ -34,7 +34,7 @@ game.stringToFunction = function(string) {
     }
 };
 
-game.siteChange = function(string) {
+game.siteChange = function (string) {
     game.site = game.stringToFunction(string);
     game.siteName = string;
 
@@ -42,3 +42,13 @@ game.siteChange = function(string) {
 
     game.site();
 };
+
+user.progress.repository.spaceSet = function () {
+    for (let x = 0; x < user.progress.repository.size.width; x++) {
+        user.progress.repository.contains.push([]);
+
+        for (let y = 0; y < user.progress.repository.size.height; y++) {
+            user.progress.repository.contains[x].push(undefined);
+        }
+    }
+}

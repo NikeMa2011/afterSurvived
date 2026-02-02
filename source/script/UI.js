@@ -56,15 +56,15 @@ UI.image.add = function (width, height, x, y, path, onClickFunction) {
 
     objectSet.UI.add(object);
 };
-UI.game.inventory.space.add = function (width, height, x, y) {
-    for (let i = 0; i > width; i++) {
-        for (let i = 0; i > height; i++) {
+UI.game.itemSpace.add = function (width, height, positionX, positionY) {
+    for (let x = 0; x < width; x++) {
+        for (let y = 0; y < height; y++) {
             UI.box.add(
                 undefined,
-                50,
-                50,
-                x + 50 * i,
-                y + 50 * i
+                80,
+                80,
+                positionX + 80 * x,
+                positionY + 80 * y
             );
         }
     }
@@ -447,21 +447,21 @@ UI.game.gear = function () {
         160,
         160,
         UI.gaps.padding,
-        100 + UI.gaps.padding
+        80 + UI.gaps.padding * 2
     );
     UI.box.add(
         "耳部",
         160,
         160,
         UI.gaps.padding + 160 + UI.gaps.edge,
-        100 + UI.gaps.padding
+        80 + UI.gaps.padding * 2
     );
     UI.box.add(
         "胸部",
         160,
         160,
         UI.gaps.padding + (160 + UI.gaps.edge) * 2,
-        100 + UI.gaps.padding
+        80 + UI.gaps.padding * 2
     );
 
     UI.box.add(
@@ -469,28 +469,28 @@ UI.game.gear = function () {
         500,
         160,
         UI.gaps.padding,
-        100 + UI.gaps.padding + UI.gaps.edge + 160
+        80 + UI.gaps.padding * 2 + UI.gaps.edge + 160
     );
     UI.box.add(
         "副手武器",
         500,
         160,
         UI.gaps.padding,
-        100 + UI.gaps.padding + (UI.gaps.edge + 160) * 2
+        80 + UI.gaps.padding * 2 + (UI.gaps.edge + 160) * 2
     );
     UI.box.add(
         "手枪枪套",
         245,
         160,
         UI.gaps.padding,
-        100 + UI.gaps.padding + (UI.gaps.edge + 160) * 3
+        80 + UI.gaps.padding * 2 + (UI.gaps.edge + 160) * 3
     );
     UI.box.add(
         "近战武器",
         245,
         160,
         UI.gaps.padding + 245 + UI.gaps.edge,
-        100 + UI.gaps.padding + (UI.gaps.edge + 160) * 3
+        80 + UI.gaps.padding * 2 + (UI.gaps.edge + 160) * 3
     );
 
     UI.box.add(
@@ -498,34 +498,59 @@ UI.game.gear = function () {
         160,
         160,
         UI.gaps.padding + 500 + UI.gaps.padding,
-        100 + UI.gaps.padding
+        80 + UI.gaps.padding * 2
     );
-    UI.game.inventory.space.add(
+
+    UI.game.itemSpace.add(
         1,
         1,
-            
+        UI.gaps.padding + 500 + UI.gaps.padding + 160 + UI.gaps.edge,
+        80 + UI.gaps.padding * 2 + 160 + UI.gaps.edge
     );
+    UI.game.itemSpace.add(
+        1,
+        2,
+        UI.gaps.padding + 500 + UI.gaps.padding + 160 + UI.gaps.edge + 80 + UI.gaps.crack,
+        80 + UI.gaps.padding * 2 + 160 + UI.gaps.edge
+    );
+    UI.game.itemSpace.add(
+        1,
+        2,
+        UI.gaps.padding + 500 + UI.gaps.padding + 160 + UI.gaps.edge + (80 + UI.gaps.crack) * 2,
+        80 + UI.gaps.padding * 2 + 160 + UI.gaps.edge
+    );
+    UI.game.itemSpace.add(
+        1,
+        1,
+        UI.gaps.padding + 500 + UI.gaps.padding + 160 + UI.gaps.edge + (80 + UI.gaps.crack) * 3,
+        80 + UI.gaps.padding * 2 + 160 + UI.gaps.edge
+    );
+
     UI.box.add(
         "背包",
         160,
         160,
         UI.gaps.padding + 500 + UI.gaps.padding,
-        100 + UI.gaps.padding + (160 + UI.gaps.edge) * 2
+        80 + UI.gaps.padding * 2 + (160 + UI.gaps.edge) * 2
     );
+
+    UI.game.repositoryDraw();
 
     UI.banner.add(
         canvas.size.width,
-        100 + UI.gaps.padding,
+        80 + UI.gaps.padding * 2,
         0,
         0
     );
     UI.banner.add(
         canvas.size.width,
-        100 + UI.gaps.padding,
+        80 + UI.gaps.padding * 2,
         0,
-        100 + UI.gaps.padding + 640 + UI.gaps.edge * 3
+        canvas.size.height - (UI.gaps.padding * 2 + 80)
     );
+}
 
+UI.game.itemBind = function () {
     UI.box.add(
         "1",
         80,
@@ -596,8 +621,18 @@ UI.game.gear = function () {
         (canvas.size.width - 80 * 10) / 2 + 80 * 9,
         canvas.size.height - UI.gaps.padding - 80
     );
-}
+};
 
 UI.game.repository = function () {
     UI.game.gear();
-}
+    UI.game.itemBind();
+};
+
+UI.game.repositoryDraw = function () {
+    UI.game.itemSpace.add(
+        user.progress.repository.size.width,
+        user.progress.repository.size.height,
+        canvas.size.width - user.progress.repository.size.width * 80 - UI.gaps.padding,
+        UI.gaps.padding * 2 + 80
+    );
+};

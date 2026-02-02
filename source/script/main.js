@@ -80,7 +80,8 @@ const UI = {
     gaps: {
         gap: 20,
         padding: 50,
-        edge: 10
+        edge: 10,
+        crack: 5
     },
     text: {},
     manu: {
@@ -93,9 +94,7 @@ const UI = {
     banner: {},
     edit: {},
     game: {
-        inventory: {
-            space: {}
-        },
+        itemSpace: {}
     }
 };
 
@@ -111,9 +110,10 @@ const user = {
         achievement: {},
         repository: {
             size: {
-                height: 32,
-                width: 8
-            }
+                height: 64,
+                width: 10
+            },
+            contains: []
         }
     },
     settings: {
