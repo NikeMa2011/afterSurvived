@@ -12,6 +12,10 @@ class UI_moudle {
         this.onMouse = undefined;
         this.onMouseFunction = undefined;
         this.onClickFunction = undefined;
+
+        this.rollable = undefined;
+        this.rollOffset = 0;
+        this.maximumRollOffset = undefined;
     }
 
     click() {
@@ -68,8 +72,6 @@ class banner extends UI_moudle {
 class option extends UI_moudle {
     constructor() {
         super();
-
-        this.onclick = game.function.disable;
     }
 
     draw() {
@@ -103,7 +105,7 @@ class box extends UI_moudle {
     draw() {
         canvas.color.set(this.color);
 
-        
+
         if (this.string) {
             UI.font.set(UI.font.size.small);
 
@@ -116,7 +118,7 @@ class box extends UI_moudle {
 
         canvasContext.strokeRect(
             this.position.x,
-            this.position.y,
+            this.position.y - this.rollOffset,
             this.size.width,
             this.size.height
         );
@@ -159,7 +161,7 @@ class image extends UI_moudle {
 
         canvas.color.set(this.color);
 
-        for (let i = 0; i < this.lineSet.length; i ++) {
+        for (let i = 0; i < this.lineSet.length; i++) {
             canvasContext.beginPath();
 
             for (let j = 0; j < this.lineSet[i].length; j += 2) {

@@ -5,113 +5,168 @@ const gameObject = {
     },
     entity: {
         player: {},
+        container: {
+            airDrop: {},
+            cashier: {},
+            drawer: {},
+            grenadeBox: {},
+            clouth: {},
+            medicBag: {},
+            medicBox: {},
+            medicStorgeBox: {},
+            computerCase: {},
+            suitCase: {},
+            travelBag: {},
+            supplyStorgeBox: {},
+            safeBox: {},
+            toolBox: {},
+            woodenBox: {},
+            militaryBox: {},
+            militaryCrate: {},
+            militaryCase: {},
+            ammoBox: {},
+        }
     },
     item: {
-        waepon: {
+        weapon: {
             rifle: {
                 assault: {
                     AKM: {},
-                    AKMS: {},
                     AK_74N: {},
-                    AKS_74N: {},
+                    AKS_74UN: {},
                     AK_74M: {},
                     AK_12: {},
                     AsVal: {},
+                    OTs_14: {},
+
                     M16A1: {},
                     M16A4: {},
                     M4A1: {},
                     SCAR_L: {},
                     SCAR_H: {},
-                    M7: {},
-                    MCX: {},
+                    XM7: {},
+
                     G36: {},
                     G3: {},
+
                     famas: {},
+
                     AUG: {},
+
+                    L85A3: {},
+
                     type_81: {},
-                    type_95: {},
-                    type_03: {},
+                    QBZ_95_1: {},
+                    QBZ_95_1B: {},
                     QBZ_191: {},
                     QBZ_192: {}
                 },
                 carbine: {
                     SKS: {},
                     SVT_40: {},
-                    M14: {},
+
+                    M1A: {},
+
                     type_63: {}
                 },
                 sniper: {
-                    SV_98: {},
                     mosinNagant: {},
-                    DVL_10: {},
-                    M700: {},
-                    QBU_88: {},
+                    SVD: {},
+                    SV_98: {},
                     VSS: {},
-                    SVD: {}
+
+                    M700: {},
+                    M24A3: {},
+                    Mk_14: {},
+
+                    QBU_88: {},
+                    QBU_203: {},
+                    QBU_191: {}
                 },
                 subMachineGun: {
                     MP5: {},
-                    MP5K: {},
                     UMP_45: {},
-                    MP7: {},
+                    MP7A2: {},
+
                     MP9: {},
                     MPX: {},
+
                     UZI: {},
+
                     PP_19_01: {},
                     PP_91: {},
+                    AK_9: {},
                     PPSh_41: {},
                     PPS_43: {},
-                    QBZ_95B: {},
-                    QCQ_171: {},
+
                     type_79: {},
                     type_85: {},
-                    CSLR_7: {},
-                    M3: {}
+                    QCQ_171: {},
+                    QCQ_05: {},
+
+                    M3A1: {}
                 },
                 machineGun: {
                     M60: {},
+                    M249: {},
+
                     PKM: {},
-                    RPDN: {},
                     RPK_16: {},
+
                     QJB_95: {},
+                    QJY_201: {},
+
                     MG3: {}
                 },
                 shotGun: {
                     AA_12: {},
                     M870: {},
+
                     TOZ_106: {},
+                    KS_23: {},
                     S12K: {},
+
+                    doubleBarreled: {},
+
                     QBS_09: {}
                 }
             },
             pistol: {
+                TT_33: {},
                 PM: {},
-                APS: {},
                 MP_443: {},
+
                 FN_57: {},
+
                 G17: {},
                 G18C: {},
+
                 M9A3: {},
-                M1911: {},
+                M1911A1: {},
+
                 USP_45: {},
-                PPK: {},
-                TT_33: {},
+
                 type92G: {},
-                type_92_9mm: {},
                 type_92_58mm: {}
             },
             melee: {
                 corssBar: {},
-                type_95: {},
+                QNL_95: {},
                 M9: {},
                 mutiFunctionShovel: {}
             },
             throw: {
                 RGD_5: {},
+                RGO: {},
+                F_1: {},
+
+                Mk_2: {},
                 M67: {},
                 M26: {},
-                type_86: {},
                 M18: {},
+
+                type_86: {},
+
                 molotovCocktail: {},
             }
         },
@@ -198,13 +253,29 @@ const gameObject = {
                 ibuprofen: {},
                 aspirin: {},
                 morphine: {},
-                caffeine: {}
+
+                fengYouJin: {},
+                goldStar: {},
             },
             medicine: {
                 antibiotics: {},
+                coughSyrup: {}
             },
             inject: {
-                epinephrine: {}
+                epinephrine: {},
+                caffeine: {}
+            },
+            tourniquet: {
+                tourniquet: {}
+            },
+            splint: {
+                splint: {}
+            },
+            other: {
+                waterPurificationTablet: {},
+                vitamin: {},
+                syringe: {},
+                bloodImportTool: {}
             }
         },
         food: {
@@ -237,14 +308,11 @@ const gameObject = {
                 boxOfSugar: {},
                 candy: {},
                 bread: {},
-                breakCube: {},
                 crackers: {},
 
-                weiLongSpicyStrips: {},
-                wangWangCracker: {},
-
+                baBaoGruel: {},
                 douChiFishCan: {},
-                huangTaoCan: {},
+                yellowPeachCan: {},
                 lunchMeatCAn: {},
                 porkCan: {},
                 peaCan: {},
@@ -256,55 +324,35 @@ const gameObject = {
             }
         },
         electronic: {
-            nvidiaGraphicCard: {},
-            intelCPU: {},
-            AMDCPU: {},
-
+            graphicCard: {},
+            CPU: {},
             mainBoard: {},
             RAM: {},
             HDD: {},
             SSD: {},
             CD: {},
+            USBdrive: {},
             CDdrive: {},
-            cooler: {},
-            networkCard: {},
+            fan: {},
 
             wire: {},
             cable: {},
             capacitor: {},
-            powerSuppler: {},
-            PCB: {},
             relay: {},
-            resistor: {},
 
-            phoneLEDscreen: {},
-            laptopLEDscreen: {},
+            PCB: {},
+            microcontroller: {},
 
-            cylinderBattery: {},
-            carBattery: {},
-
-            charger: {},
-            powerBank: {},
-
-            encryptedUSBdrive: {},
-
+            LCD: {},
             touchBorad: {},
-            mouse: {},
 
-            macLaptop: {},
-            lenovoLaptop: {},
-
-            Iphone: {},
-            huaweiPhone: {},
-
-            Ipods: {},
-            huaweiEarPhone: {},
+            laptop: {},
+            earPhone: {},
             headPhone: {},
-
-            appleWatch: {},
-            huaweiWatch: {},
-
-            calculator: {}
+            watch: {},
+            phone: {},
+            laptop: {},
+            tablet: {}
         },
         mechanic: {
             wrench: {},
@@ -316,23 +364,23 @@ const gameObject = {
             electricDriller: {},
             airFilter: {},
             waterFilter: {},
-            measureRoll: {},
-            ruler: {},
             hammer: {},
 
             thermometer: {},
+            spiritLevel: {},
             barometer: {},
             WD_40: {},
             energySafeLamp: {},
             UVlamp: {},
-            blub: {}
+            blub: {},
+            gunLube: {},
+            spark: {}
         },
         material: {
-            shanpoo: {},
             magnet: {},
             screw: {},
             bolt: {},
-            glue_502: {},
+            glue: {},
             tape_transparent: {},
             tape_3M: {},
             nut: {},
@@ -343,8 +391,31 @@ const gameObject = {
             metalTube: {},
             gunPower: {},
             fabric: {},
-            matelSheet: {},
-            
+            matelSheet: {}
+        },
+        fuel: {
+            matches: {},
+            lighter: {},
+            LPGtank: {},
+            gasBottle: {},
+            solidAhcohol: {}
+        },
+        power: {
+            cylinderBattery: {},
+            carBattery: {},
+
+            charger: {},
+            powerBank: {},
+            PSU: {},
+        },
+        houseHold: {
+            toothpaste: {},
+            bleach: {},
+            salt: {},
+            cleaner: {},
+            soap: {},
+            paper: {},
+            cigarette: {}
         },
         intelligence: {
 
@@ -353,7 +424,75 @@ const gameObject = {
 
         },
         other: {
+            bogTag: {},
+            compass: {}
+        },
+        valuable: {
+            silverNecklace: {},
+            goldNecklace: {},
+            badge: {},
+            ring: {},
+            silverBracelet: {},
+            goldBraceLet: {},
+            jadeBraceLet: {},
+            rolex: {},
+            physicalBitcoin: {},
+            zippo: {}
+        },
 
-        }
+        chest: {
+            armor: {
+                MTV: {},
+            },
+            chestRig: {
+                armor: {
+                    _6B45: {}
+                },
+                vest: {
+                    type_56: {},
+                    type_81: {},
+                    type_95: {},
+
+                    _6B46: {},
+                    _6Sh117: {},
+                }
+            },
+        },
+        head: {
+            helmet: {
+                SSh_68: {},
+                _6B47: {},
+                altyn: {},
+
+                M1: {},
+                PASGT: {},
+                ACH: {},
+                LWH: {},
+                FAST: {},
+                EXFIL: {},
+
+                QGF_02: {},
+                QGF_03: {},
+                QGF_11: {},
+                W_15: {},
+
+                MK_7: {},
+            },
+            hat: {
+                cottonHat: {},
+                baseBallCap: {},
+                woolHat: {},
+                boonleHat: {},
+                beretHat: {},
+                camouflageHat: {}
+            },
+            ear: {
+                M32: {}
+            }
+        },
+        backpack: {
+            studentBackPack: {},
+            BL002: {},
+        },
     }
 };

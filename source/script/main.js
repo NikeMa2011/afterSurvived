@@ -25,7 +25,8 @@ const game = {
         value: 40,
         milisecond: undefined
     },
-    function: {}
+    item: {},
+    space: {}
 };
 
 const viewpoint = {
@@ -74,6 +75,7 @@ const UI = {
     },
     color: {
         white: "#ffffff",
+        lightDark: "#404040",
         dark: "#202020",
         darkBackground: "#88888820"
     },
@@ -94,7 +96,14 @@ const UI = {
     banner: {},
     edit: {},
     game: {
-        itemSpace: {}
+        itemSpace: {
+            single: {},
+            size: 80
+        },
+        item: {}
+    },
+    roll: {
+        offset: 2
     }
 };
 
@@ -110,7 +119,7 @@ const user = {
         achievement: {},
         repository: {
             size: {
-                height: 64,
+                height: 32,
                 width: 10
             },
             contains: []

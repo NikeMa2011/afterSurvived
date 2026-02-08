@@ -43,12 +43,40 @@ game.siteChange = function (string) {
     game.site();
 };
 
-user.progress.repository.spaceSet = function () {
-    for (let x = 0; x < user.progress.repository.size.width; x++) {
-        user.progress.repository.contains.push([]);
+game.space.set = function (target) {
+    for (let x = 0; x < target.size.width; x++) {
+        target.contains.push([]);
 
-        for (let y = 0; y < user.progress.repository.size.height; y++) {
-            user.progress.repository.contains[x].push(undefined);
+        for (let y = 0; y < target.size.height; y++) {
+            target.contains[x].push(undefined);
         }
     }
-}
+};
+
+game.item.addTo = function (object, target, x, y) {
+    target[x][y] = object.create();
+};
+
+user.progress.repository.setup = function () {
+    let userRepository = user.progress.repository.contains;
+
+    game.item.addTo(gameObject.item.weapon.rifle.assault.QBZ_95_1, userRepository, 0, 0);
+    // game.item.addTo(gameObject.item.weapon.rifle.subMachineGun.QCQ_05, userRepository);
+    // game.item.addTo(gameObject.item.weapon.pistol.type_92_58mm, userRepository);
+    // game.item.addTo(gameObject.item.weapon.melee.type_95, userRepository);
+
+    // game.item.addTo(gameObject.item.chest.chestRig.vest.type_95, userRepository);
+    // game.item.addTo(gameObject.item.head.hat.baseBallCap, userRepository);
+
+    // game.item.addTo(gameObject.item.ammo.caliber_58x42_DBP191, userRepository);
+
+    // game.item.addTo(gameObject.item.medical.painkill.fengYouJin, userRepository);
+    // game.item.addTo(gameObject.item.medical.bandage.amryBandage, userRepository);
+    // game.item.addTo(gameObject.item.medical.medicine.antibiotics, userRepository);
+    // game.item.addTo(gameObject.item.medical.surgery.surgeryForcep, userRepository);
+
+    // game.item.addTo(gameObject.item.food.eat.type_20, userRepository);
+    // game.item.addTo(gameObject.item.food.drink.nongFuSpring, userRepository);
+
+    // game.item.addTo(gameObject.item.other.compass, userRepository);
+};

@@ -32,7 +32,7 @@ class weapon extends item {
             full: undefined,
             current: undefined
         },
-        this.shoot = [];
+            this.shoot = [];
         this.ammoUsed = undefined;
         this.caliber = undefined;
         this.assessories = {};
@@ -46,13 +46,13 @@ class weapon extends item {
     }
 }
 
-gameObject.item.waepon.rifle.assault.AKM.create = function() {
+gameObject.item.weapon.rifle.assault.AKM.create = function () {
     let object = new weapon();
 
-    object.ID = "gameObject.item.waepon.rifle.assault.AKM";
+    object.ID = "gameObject.item.weapon.rifle.assault.AKM";
     object.name = "AKM";
     object.fullName = "AKM突击步枪(第三改进型)";
-    object.description = "由AK47改进而来, 护木/枪托/枪口/导气不一样, 三型AKM枪口有斜切口防跳, 依旧坚固可靠";
+    object.description = "坚固可靠这一块";
 
     object.type = "assaultRife";
 
@@ -63,6 +63,9 @@ gameObject.item.waepon.rifle.assault.AKM.create = function() {
         single = false,
         auto = false
     ];
+
+    object.size.width = 5;
+    object.size.height = 3;
 
     object.weight.single = 3000;
 
@@ -86,13 +89,53 @@ gameObject.item.waepon.rifle.assault.AKM.create = function() {
     return object;
 };
 
-gameObject.item.waepon.rifle.assault.AK_74N.create = function() {
+gameObject.item.weapon.rifle.assault.QBZ_95_1.create = function () {
     let object = new weapon();
 
-    object.ID = "gameObject.item.waepon.rifle.assault.AK_74N";
+    object.ID = "gameObject.item.weapon.rifle.assault.QBZ_95_1";
+    object.name = "95-1";
+    object.fullName = "95式突击步枪(改进型)";
+    object.description = "做最优质的战士!";
+
+    object.type = "assaultRife";
+
+    object.durability.maximum = object.durability.full = object.durability.current = 120;
+
+    object.shoot = [
+        safety = true,
+        single = false,
+        auto = false
+    ];
+
+    object.size.width = 5;
+    object.size.height = 3;
+
+    object.weight.single = 3150;
+
+    object.assessories = {
+        muzzle: undefined,
+        megazine: undefined,
+        handle: undefined
+    };
+
+    object.recoil = 3.9;
+    object.RPS = 10
+
+    object.caliber = "5.8x42";
+    object.falut.posibility = 0.45;
+
+    object.accuracy = 0.955;
+
+    return object;
+};
+
+gameObject.item.weapon.rifle.assault.AK_74N.create = function () {
+    let object = new weapon();
+
+    object.ID = "gameObject.item.weapon.rifle.assault.AK_74N";
     object.name = "AK-74N";
     object.fullName = "AK-74N突击步枪";
-    object.description = "苏联人在看到越南战争中美军用的5.56mm口径子弹的综合性能后对自家AK进行改装的产物, 用的是自研的5.45mm, 有燕尾槽";
+    object.description = "苏联入在看到越南战争中美军用的5.56mm口径子弹的综合性能后对自家AK进行魔改的产物";
 
     object.type = "assaultRifle";
 
@@ -106,7 +149,6 @@ gameObject.item.waepon.rifle.assault.AK_74N.create = function() {
 
     object.size.width = 5;
     object.size.height = 3;
-    object.size.depth = 1;
 
     object.weight.single = 3150;
 
@@ -131,13 +173,13 @@ gameObject.item.waepon.rifle.assault.AK_74N.create = function() {
     return object;
 };
 
-gameObject.item.waepon.pistol.PM.create = function() {
+gameObject.item.weapon.pistol.PM.create = function () {
     let object = new weapon();
 
-    object.ID = "gameObject.item.waepon.pistol.PM";
+    object.ID = "gameObject.item.weapon.pistol.PM";
     object.name = "PM";
     object.fullName = "PM手枪";
-    object.description = "二战后苏联人总结发现手枪只是其实自卫武器, 所以开发了PM来替代TT-33, 用的9x18mm";
+    object.description = "你知道吗? 手枪实际上只是自卫武器";
 
     object.type = "pistol";
 
@@ -150,7 +192,6 @@ gameObject.item.waepon.pistol.PM.create = function() {
 
     object.size.width = 2;
     object.size.height = 2;
-    object.size.depth = 1;
 
     object.weight.single = 650;
 
@@ -183,7 +224,7 @@ class ammo extends item {
 }
 
 
-gameObject.item.ammo.caliber_545x39_7N6.create = function() {
+gameObject.item.ammo.caliber_545x39_7N6.create = function () {
     let object = new ammo();
 
     object.ID = "gameObject.item.ammo.caliber_545x39_7N6";
@@ -191,7 +232,7 @@ gameObject.item.ammo.caliber_545x39_7N6.create = function() {
     object.fullName = "5.45x39mm 7N6弹药";
     object.description = "5.45x39毫米(mm) 7N6 软化钢芯全金属被甲弹";
 
-    object.size.height = object.size.width = object.size.depth = 1;
+    object.size.height = object.size.width = 1;
 
     object.caliber = "5.45x39";
 
@@ -207,7 +248,7 @@ gameObject.item.ammo.caliber_545x39_7N6.create = function() {
     return object;
 };
 
-gameObject.item.ammo.caliber_9x18_FMJ.create = function() {
+gameObject.item.ammo.caliber_9x18_FMJ.create = function () {
     let object = new ammo();
 
     object.ID = "gameObject.item.ammo.caliber_9x18_FMJ";
@@ -215,7 +256,7 @@ gameObject.item.ammo.caliber_9x18_FMJ.create = function() {
     object.fullName = "9x18mm马卡洛夫弹药";
     object.description = "9x18毫米(mm) FMJ 全金属披甲弹";
 
-    object.size.height = object.size.width = object.size.depth = 1;
+    object.size.height = object.size.width = 1;
 
     object.caliber = "9x18";
 
@@ -241,7 +282,7 @@ class megazine extends item {
     }
 }
 
-gameObject.item.magazine.AKseries_545x39_30.create = function() {
+gameObject.item.magazine.AKseries_545x39_30.create = function () {
     let object = new megazine();
 
     object.ID = "gameObject.item.magazine.AKseries_545x39_30";
@@ -257,10 +298,9 @@ gameObject.item.magazine.AKseries_545x39_30.create = function() {
 
     object.size.height = 2;
     object.size.width = 1;
-    object.size.depth = 1;
 };
 
-gameObject.item.magazine.AKseries_545x39_30.create = function() {
+gameObject.item.magazine.AKseries_545x39_30.create = function () {
     let object = new megazine();
 
     object.ID = "gameObject.item.magazine.AKseries_545x39_30";
@@ -276,10 +316,9 @@ gameObject.item.magazine.AKseries_545x39_30.create = function() {
 
     object.size.height = 2;
     object.size.width = 1;
-    object.size.depth = 1;
 };
 
-gameObject.item.magazine.PM_9x18_8.create = function() {
+gameObject.item.magazine.PM_9x18_8.create = function () {
     let object = new megazine();
 
     object.ID = "gameObject.item.magazine.PM_9x18_8";
@@ -293,7 +332,7 @@ gameObject.item.magazine.PM_9x18_8.create = function() {
 
     object.wieght.single = 80;
 
-    object.size.height = object.size.width = object.size.depth = 1;
+    object.size.height = object.size.width = 1;
 };
 
 class medical extends item {

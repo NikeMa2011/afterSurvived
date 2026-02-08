@@ -12,7 +12,8 @@ game.FPS.set();
 game.inGame = false;
 game.status = "manu";
 
-user.progress.repository.spaceSet();
+game.space.set(user.progress.repository);
+user.progress.repository.setup();
 
 game.siteChange("accountSet_name");
 

@@ -6,8 +6,8 @@ UI.option.add = function (string, height, x, y, onClickFunction, onMouseFunction
     object.size.height = height;
     object.position.x = x;
     object.position.y = y;
-    onClickFunction ? object.onClickFunction = onClickFunction : null;
-    onMouseFunction ? object.onMouseFunction = onMouseFunction : null;
+    onClickFunction ? object.onClickFunction = onClickFunction : undefined;
+    onMouseFunction ? object.onMouseFunction = onMouseFunction : undefined;
 
     objectSet.UI.add(object);
 };
@@ -32,7 +32,7 @@ UI.text.add = function (string, height, x, y) {
 
     objectSet.UI.add(object);
 };
-UI.box.add = function (string, width, height, x, y, onClickFunction) {
+UI.box.add = function (string, width, height, x, y, rollable, maximumRollOffset, onClickFunction, item) {
     let object = new box();
 
     object.string = string;
@@ -40,7 +40,10 @@ UI.box.add = function (string, width, height, x, y, onClickFunction) {
     object.size.height = height;
     object.position.x = x;
     object.position.y = y;
-    onClickFunction ? object.onClickFunction : null;
+    rollable ? object.rollable = rollable : undefined;
+    maximumRollOffset ? object.maximumRollOffset = maximumRollOffset : undefined;
+    onClickFunction ? object.onClickFunction = onClickFunction : undefined;
+    item ? object.item = item : undefined;
 
     objectSet.UI.add(object);
 };
@@ -51,23 +54,61 @@ UI.image.add = function (width, height, x, y, path, onClickFunction) {
     object.size.height = height;
     object.position.x = x;
     object.position.y = y;
-    path ? object.lineSet = path : null;
-    onClickFunction ? object.onClickFunction = onClickFunction : null;
+    path ? object.lineSet = path : undefined;
+    onClickFunction ? object.onClickFunction = onClickFunction : undefined;
 
     objectSet.UI.add(object);
 };
-UI.game.itemSpace.add = function (width, height, positionX, positionY) {
+UI.game.itemSpace.add = function (width, height, positionX, positionY, rollable, maximumRollOffset, item) {
+    UI.box.add(
+        undefined,
+        width * 80,
+        height * 80,
+        positionX,
+        positionY,
+        rollable,
+        maximumRollOffset
+    );
+
     for (let x = 0; x < width; x++) {
         for (let y = 0; y < height; y++) {
-            UI.box.add(
-                undefined,
+            UI.game.itemSpace.single.add(
                 80,
                 80,
                 positionX + 80 * x,
-                positionY + 80 * y
+                positionY + 80 * y,
+                rollable,
+                maximumRollOffset
             );
         }
     }
+};
+UI.game.itemSpace.single.add = function (width, height, x, y, rollable, maximumRollOffset) {
+    let object = new box();
+
+    object.size.width = width;
+    object.size.height = height;
+    object.position.x = x;
+    object.position.y = y;
+    rollable ? object.rollable = rollable : undefined;
+    maximumRollOffset ? object.maximumRollOffset = maximumRollOffset : undefined;
+
+    object.color = UI.color.lightDark;
+
+    objectSet.UI.add(object);
+};
+
+UI.game.item.add = function (item, positionX, positionY) {
+    let object = new box();
+
+    object.item = item;
+    object.size.width = item.size.width * 80;
+    object.size.height = item.size.height * 80;
+
+    object.position.x = positionX;
+    object.position.y = positionY;
+
+    object.model = item.model;
 };
 
 UI.font.set = function (height) {
@@ -538,15 +579,15 @@ UI.game.gear = function () {
 
     UI.banner.add(
         canvas.size.width,
-        80 + UI.gaps.padding * 2,
+        80 + UI.gaps.padding * 2 - 1,
         0,
         0
     );
     UI.banner.add(
         canvas.size.width,
-        80 + UI.gaps.padding * 2,
+        80 + UI.gaps.padding * 2 - 1,
         0,
-        canvas.size.height - (UI.gaps.padding * 2 + 80)
+        canvas.size.height - (UI.gaps.padding * 2 + 80 - 1)
     );
 }
 
@@ -633,6 +674,20 @@ UI.game.repositoryDraw = function () {
         user.progress.repository.size.width,
         user.progress.repository.size.height,
         canvas.size.width - user.progress.repository.size.width * 80 - UI.gaps.padding,
-        UI.gaps.padding * 2 + 80
+        UI.gaps.padding * 2 + 80,
+        true,
+        user.progress.repository.size.height * 80 - 80 * 4
     );
+
+    for (let x = 0; x < user.progress.repository.contains.length; x++) {
+        for (let y = 0; y < user.progress.repository.contains[x].length; y++) {
+            if (user.progress.repository.contains[x][y]) {
+                UI.game.item.add(
+                    user.progress.repository.contains[x][y],
+                    x,
+                    y
+                );
+            }
+        }
+    }
 };
