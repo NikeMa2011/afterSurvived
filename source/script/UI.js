@@ -2,10 +2,13 @@ UI.option.add = function (string, height, x, y, onClickFunction, onMouseFunction
     let object = new option();
 
     object.string = string;
+
     object.size.width = string.length * height;
     object.size.height = height;
+
     object.position.x = x;
     object.position.y = y;
+
     onClickFunction ? object.onClickFunction = onClickFunction : undefined;
     onMouseFunction ? object.onMouseFunction = onMouseFunction : undefined;
 
@@ -16,6 +19,7 @@ UI.banner.add = function (width, height, x, y) {
 
     object.size.width = width;
     object.size.height = height;
+
     object.position.x = x;
     object.position.y = y;
 
@@ -25,8 +29,10 @@ UI.text.add = function (string, height, x, y) {
     let object = new text();
 
     object.string = string;
+
     object.size.width = string.length * height;
     object.size.height = height;
+
     object.position.x = x;
     object.position.y = y;
 
@@ -36,12 +42,16 @@ UI.box.add = function (string, width, height, x, y, rollable, maximumRollOffset,
     let object = new box();
 
     object.string = string;
+
     object.size.width = width;
     object.size.height = height;
+
     object.position.x = x;
     object.position.y = y;
+
     rollable ? object.rollable = rollable : undefined;
     maximumRollOffset ? object.maximumRollOffset = maximumRollOffset : undefined;
+
     onClickFunction ? object.onClickFunction = onClickFunction : undefined;
     item ? object.item = item : undefined;
 
@@ -52,14 +62,17 @@ UI.image.add = function (width, height, x, y, path, onClickFunction) {
 
     object.size.width = width;
     object.size.height = height;
+
     object.position.x = x;
     object.position.y = y;
+
     path ? object.lineSet = path : undefined;
+
     onClickFunction ? object.onClickFunction = onClickFunction : undefined;
 
     objectSet.UI.add(object);
 };
-UI.game.itemSpace.add = function (width, height, positionX, positionY, rollable, maximumRollOffset, item) {
+UI.game.itemSpace.add = function (width, height, positionX, positionY, rollable, maximumRollOffset) {
     UI.box.add(
         undefined,
         width * 80,
@@ -88,9 +101,12 @@ UI.game.itemSpace.single.add = function (width, height, x, y, rollable, maximumR
 
     object.size.width = width;
     object.size.height = height;
+
     object.position.x = x;
     object.position.y = y;
+
     rollable ? object.rollable = rollable : undefined;
+
     maximumRollOffset ? object.maximumRollOffset = maximumRollOffset : undefined;
 
     object.color = UI.color.lightDark;
@@ -98,10 +114,13 @@ UI.game.itemSpace.single.add = function (width, height, x, y, rollable, maximumR
     objectSet.UI.add(object);
 };
 
-UI.game.item.add = function (item, positionX, positionY) {
+UI.game.item.add = function (item, positionX, positionY, rollable, maximumRollOffset) {
     let object = new box();
 
     object.item = item;
+
+    object.string = item.fullName;
+
     object.size.width = item.size.width * 80;
     object.size.height = item.size.height * 80;
 
@@ -109,6 +128,11 @@ UI.game.item.add = function (item, positionX, positionY) {
     object.position.y = positionY;
 
     object.model = item.model;
+
+    rollable ? object.rollable = rollable : undefined;
+    maximumRollOffset ? object.maximumRollOffset = maximumRollOffset : undefined;
+
+    objectSet.UI.add(object);
 };
 
 UI.font.set = function (height) {
@@ -684,8 +708,10 @@ UI.game.repositoryDraw = function () {
             if (user.progress.repository.contains[x][y]) {
                 UI.game.item.add(
                     user.progress.repository.contains[x][y],
-                    x,
-                    y
+                    canvas.size.y - UI.gaps.padding - user.progress.repository.size.width * 80 + x * 80,
+                    80 + UI.gaps.padding * 2 + y * 80,
+                    true,
+                    user.progress.repository.size.height * 80
                 );
             }
         }
