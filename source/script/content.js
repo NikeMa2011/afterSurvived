@@ -1,5 +1,8 @@
 game.content = {
     title: "After Survived",
+    inMatch: false,
+    status: "UI",
+    site: undefined,
     audio: {
         music: {
 
@@ -41,10 +44,15 @@ game.content = {
         weapon: {
             gun: {
                 assult: {
+                    AKM: {},
                     AKMN: {},
+                    AKMS: {},
                     AKMSN: {},
+                    AK74: {},
                     AK74N: {},
+                    AKS74U: {},
                     AKS74UN: {},
+                    AKS74UB: {},
                     AK74M: {},
                     AK101: {},
                     AK102: {},
@@ -58,8 +66,11 @@ game.content = {
                     Ash12: {},
                     AK9: {},
                     SR3M: {},
+                    _9A91: {},
 
+                    type56: {},
                     type81: {},
+                    type87: {},
                     QBZ95: {},
                     QBZ95B: {},
                     QBZ95_1: {},
@@ -77,8 +88,8 @@ game.content = {
                     SCAR_L: {},
                     SCAR_H: {},
 
-                    SA85A2: {},
-                    SA80: {},
+                    L85A2: {},
+                    L85A3: {},
                     L22A2: {},
 
                     G3A3: {},
@@ -96,6 +107,7 @@ game.content = {
                 subMachineGun: {
                     PP19: {},
                     PP19_01: {},
+                    SR2M: {},
                     PP91: {},
 
                     type79: {},
@@ -118,18 +130,22 @@ game.content = {
                 },
                 carbine: {
                     mosinNagant: {},
-                    SVT: {},
+                    SVT40: {},
+                    AVT40: {},
                     SKS: {},
+                    VSK94: {},
 
                     type63: {},
 
-                    M14: {}
+                    M1A: {},
+                    M14: {},
                 },
                 sharpShoot: {
                     SVD: {},
                     SVDK: {},
                     SVU: {},
                     VSK94: {},
+                    VSS: {},
 
                     QBU88: {},
                     QBU191: {},
@@ -138,6 +154,7 @@ game.content = {
                 },
                 boltSnipe: {
                     SV98: {},
+                    SV99: {},
                     T5000: {},
 
                     QBU202: {},
@@ -173,10 +190,12 @@ game.content = {
                 pistol: {
                     TT33: {},
                     PM: {},
+                    PMM: {},
                     APS: {},
                     MP443: {},
 
-                    type64: {},
+                    type54: {},
+                    type59: {},
                     QSZ92_58: {},
                     QSZ92G: {},
                     QSW06: {},
@@ -187,9 +206,12 @@ game.content = {
                     P228: {},
                     P320: {},
 
+                    PPK: {},
                     USP45: {},
 
-                    glock18: {},
+                    glock17: {},
+                    glock18C: {},
+                    glock19: {},
 
                     CZ75: {},
 
@@ -203,6 +225,8 @@ game.content = {
                 M9: {},
                 M7: {},
                 _6KH5: {},
+            },
+            other: {
                 crossbow: {}
             },
             throw: {
@@ -267,6 +291,9 @@ game.content = {
             }
         },
         ammo: {
+            _22LR: {
+
+            },
             _762x39: {
                 PS: {},
                 BP: {},
@@ -346,6 +373,9 @@ game.content = {
                 deer: {},
                 bird: {},
                 slug: {}
+            },
+            _9x21: {
+
             },
             _58x42: {
                 DBP87: {},

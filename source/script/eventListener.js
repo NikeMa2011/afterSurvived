@@ -17,3 +17,9 @@ onmousedown = (event) => {
 onmousedown = (event) => {
     keySet[event.button] = false;
 };
+
+onresize = () => {
+    canvas.size.set();
+    canvas.DOM.size.set();
+    game.UI.font.style.set();
+};
