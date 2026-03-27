@@ -1,9 +1,24 @@
 game.tick = function () {
     game.UI.mouse.TargetDetect();
+
+    game.input.key.tick();
 };
 
 game.UI.mouse.TargetDetect = function () {
+    for (let i in objectSet.UI.object) {
+        let object = objectSet.UI.object[i];
 
+        if (
+            mouse.position.x >= object.position.x &&
+            mouse.position.x <= object.position.x + object.size.x &&
+            mouse.position.y >= object.position.y &&
+            mouse.position.y <= object.position.y + object.size.y
+        ) {
+            mouse.target = object;
+
+            return;
+        }
+    }
 };
 
 game.rendLoop = function () {
@@ -30,15 +45,19 @@ game.interval.tick.set = function () {
     game.interval.tick.millisecond = Math.floor(1000 / game.interval.tick.value);
 };
 
-game.UI.manu.change = function (index) {
+objectSet.UI.clear = function () {
+    objectSet.UI.object = {};
+};
+
+game.UI.site.change = function (index) {
     switch (index) {
         case "startManu":
-            objectSet.UI.object = {};
-            game.UI.manu.startManu();
+            objectSet.UI.clear();
+            game.UI.site.startManu();
             break;
         case "mapSelect":
-            objectSet.UI.object = {};
-            game.UI.manu.mapSelect();
+            objectSet.UI.clear();
+            game.UI.site.mapSelect();
             break;
         default:
             throw new Error("Fault while change UI site: cannot reach the UI site index \"" + index + "\"");
@@ -69,4 +88,17 @@ game.UI.font.size.getStringWidth = function (string) {
     }
 
     return width;
+};
+
+game.UI.site.escape = function () {
+    switch (game.content.site) {
+        case "mapSelect":
+            game.UI.site.change("mainManu");
+    }
+};
+
+game.input.key.tick = function () {
+    if (keySet["Escape"]) {
+        game.UI.site.escape();
+    }
 };

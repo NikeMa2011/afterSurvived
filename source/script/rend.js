@@ -25,6 +25,10 @@ game.rend = function () {
     }
 
     for (let i in objectSet.UI.object) {
+        if (objectSet.UI.object[i].onMouse) {
+            objectSet.UI.object[i].onMouse();
+        }
+
         objectSet.UI.object[i].draw();
     }
 };

@@ -8,7 +8,7 @@ objectSet.UI.add = function (object) {
     }
 };
 
-game.UI.manu.startManu = function () {
+game.UI.site.startManu = function () {
     game.content.site = "startManu";
 
     let repositoryButton = new string();
@@ -17,13 +17,10 @@ game.UI.manu.startManu = function () {
     repositoryButton.position.x = game.UI.gap.large;
     repositoryButton.position.y = canvas.size.y - game.UI.gap.large - game.UI.font.size.huge - (game.UI.gap.medium + game.UI.font.size.huge) * 2;
     repositoryButton.color = "#ffffff";
-    repositoryButton.fontSize = game.UI.font.size.huge;
+    repositoryButton.onMouse = game.UI.function.
+        repositoryButton.fontSize = game.UI.font.size.huge;
     repositoryButton.onclick = () => game.UI.manu.change("mapSelect");
     objectSet.UI.add(repositoryButton);
-
-    // let repositoryButton = new string();
-    // repositoryButton.ID = "repositoryButton";
-    // objectSet.UI.add(repositoryButton);
 
     let getInBattleButton = new string();
     getInBattleButton.ID = "getInBattleButton";
@@ -44,7 +41,7 @@ game.UI.manu.startManu = function () {
     objectSet.UI.add(tradersButton);
 };
 
-game.UI.manu.mapSelect = function () {
+game.UI.site.mapSelect = function () {
     let title = new string();
     title.ID = "title";
     title.string = "选择地图";

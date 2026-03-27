@@ -10,4 +10,4 @@ game.UI.font.style.set();
 game.tickLoop();
 game.rendLoop();
 
-game.UI.manu.change("startManu");
+game.UI.site.change("startManu");

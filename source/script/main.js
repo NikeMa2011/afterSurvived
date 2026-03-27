@@ -6,18 +6,18 @@ const canvasContext = canvasDOM.getContext("2d");
 const game = {
     interval: {
         tick: {
-            value: 2,
+            value: 20,
             millisecond: undefined
         },
         FPS: {
-            value: 50,
+            value: 40,
             millisecond: undefined
         }
     },
     content: undefined,
     inBattle: false,
     UI: {
-        manu: {},
+        site: {},
         font: {
             size: {
                 small: 20,
@@ -32,7 +32,7 @@ const game = {
                     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
                     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
                     '-', '=', '_', '+', '[', ']', '{', '}', '\\', "|", ';', ':', '"', '\'', ',', '<', '.', '>', '/', '?',
-                    '`', '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')',
+                    '`', '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')'
                 ],
                 width: 0.5
             }
@@ -45,9 +45,10 @@ const game = {
             medium: 20,
             small: 10
         },
-        mouse: {}
+        mouse: {},
+        function: {}
     },
-    color: {},
+    input: {}
 };
 
 const viewpoint = {
