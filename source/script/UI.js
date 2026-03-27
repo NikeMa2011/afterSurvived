@@ -17,9 +17,9 @@ game.UI.site.startManu = function () {
     repositoryButton.position.x = game.UI.gap.large;
     repositoryButton.position.y = canvas.size.y - game.UI.gap.large - game.UI.font.size.huge - (game.UI.gap.medium + game.UI.font.size.huge) * 2;
     repositoryButton.color = "#ffffff";
-    repositoryButton.onMouse = game.UI.function.
-        repositoryButton.fontSize = game.UI.font.size.huge;
+    repositoryButton.fontSize = game.UI.font.size.huge;
     repositoryButton.onclick = () => game.UI.manu.change("mapSelect");
+    repositoryButton.onMouse.function = () => game.UI.function.highLightWithBorder();
     objectSet.UI.add(repositoryButton);
 
     let getInBattleButton = new string();

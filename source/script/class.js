@@ -1,11 +1,11 @@
-game.UI.function.hightLightWithBorder = function () {
-    canvasContext.fillStyle = rgba(125, 125, 125, 0.2);
+game.UI.function.highLightWithBorder = function (object) {
+    canvasContext.fillStyle = "rgba(125, 125, 125, " + object.onMouse.alpha / 2 + ")";
 
     canvasContext.fillRect(
-        this.position.x - game.UI.gap.small,
-        this.position.y - game.UI.gap.small,
-        this.size.x + game.UI.gap.small * 2,
-        this.size.y + game.UI.gap.small * 2
+        object.position.x - game.UI.gap.small,
+        object.position.y - game.UI.gap.small,
+        object.size.x + (game.UI.gap.small * 2),
+        object.size.y + (game.UI.gap.small * 2)
     );
 };
 
@@ -13,7 +13,11 @@ class UI {
     constructor() {
         this.ID = undefined;
         this.onClick = undefined;
-        this.onMouse = undefined;
+        this.onMouse = {
+            status: undefined,
+            function: undefined,
+            alpha: 0
+        };
         this.position = {
             x: undefined,
             y: undefined
@@ -40,9 +44,13 @@ class string extends UI {
     }
 
     draw() {
-        if (this.onMouse)
+        if (this.onMouse.status) {
+            if (this.onMouse.function) {
+                this.onMouse.function(this);
+            }
+        }
 
-            game.UI.font.set(this.fontSize);
+        game.UI.font.set(this.fontSize);
         canvasContext.fillStyle = this.color;
 
         canvasContext.fillText(

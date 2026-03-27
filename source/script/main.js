@@ -46,9 +46,14 @@ const game = {
             small: 10
         },
         mouse: {},
-        function: {}
+        function: {},
+        alpha: {
+            tickChangeValue: 0.02
+        }
     },
-    input: {}
+    input: {
+        key: {}
+    }
 };
 
 const viewpoint = {

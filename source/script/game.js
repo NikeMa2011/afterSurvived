@@ -2,9 +2,32 @@ game.tick = function () {
     game.UI.mouse.TargetDetect();
 
     game.input.key.tick();
+    game.UI.alpha.tick();
+};
+
+game.UI.alpha.tick = function () {
+    for (let i in objectSet.UI.object) {
+        let object = objectSet.UI.object[i];
+
+        if (object.onMouse.status) {
+            if (object.onMouse.alpha + game.UI.alpha.tickChangeValue >= 1) {
+                object.onMouse.alpha = 1;
+            } else {
+                object.onMouse.alpha += game.UI.alpha.tickChangeValue;
+            }
+        } else {
+            if (object.onMouse.alpha - game.UI.alpha.tickChangeValue <= 0) {
+                object.onMouse.alpha = 0;
+            } else {
+                object.onMouse.alpha -= game.UI.alpha.tickChangeValue;
+            }
+        }
+    }
 };
 
 game.UI.mouse.TargetDetect = function () {
+    mouse.target = undefined;
+
     for (let i in objectSet.UI.object) {
         let object = objectSet.UI.object[i];
 
@@ -14,9 +37,11 @@ game.UI.mouse.TargetDetect = function () {
             mouse.position.y >= object.position.y &&
             mouse.position.y <= object.position.y + object.size.y
         ) {
-            mouse.target = object;
+            object.onMouse.status = true;
 
-            return;
+            mouse.target = object.ID;
+        } else {
+            object.onMouse.status = false;
         }
     }
 };
