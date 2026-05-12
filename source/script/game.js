@@ -1,129 +1,29 @@
-game.tick = function () {
-    game.UI.mouse.TargetDetect();
-
-    game.input.key.tick();
-    game.UI.alpha.tick();
+game.page.set = function () {
+    pageTitleDOM.innerHTML = game.content.page.title;
+    pageIconDOM.href = game.content.page.icon;
 };
 
-game.UI.alpha.tick = function () {
-    for (let i in objectSet.UI.object) {
-        let object = objectSet.UI.object[i];
+game.graphic.FPS.milisecondDelaySet = function () {
+    game.graphic.FPS.milisecondDelay = Math.round(1000 / game.graphic.FPS.value);
+};
 
-        if (object.onMouse.status) {
-            if (object.onMouse.alpha + game.UI.alpha.tickChangeValue >= 1) {
-                object.onMouse.alpha = 1;
-            } else {
-                object.onMouse.alpha += game.UI.alpha.tickChangeValue;
-            }
-        } else {
-            if (object.onMouse.alpha - game.UI.alpha.tickChangeValue <= 0) {
-                object.onMouse.alpha = 0;
-            } else {
-                object.onMouse.alpha -= game.UI.alpha.tickChangeValue;
-            }
-        }
+game.opration.TPS.milisecondDelaySet = function () {
+    game.opration.TPS.milisecondDelay = Math.round(1000 / game.opration.TPS.value);
+};
+
+game.UI.site.change = function (siteName) {
+    if (game.UI.site[siteName]) {
+        objectSet.UI.object = {};
+        game.UI.site[siteName]();
+    } else {
+        console.error("cannot find site: " + siteName);
     }
 };
 
-game.UI.mouse.TargetDetect = function () {
-    mouse.target = undefined;
-
-    for (let i in objectSet.UI.object) {
-        let object = objectSet.UI.object[i];
-
-        if (
-            mouse.position.x >= object.position.x &&
-            mouse.position.x <= object.position.x + object.size.x &&
-            mouse.position.y >= object.position.y &&
-            mouse.position.y <= object.position.y + object.size.y
-        ) {
-            object.onMouse.status = true;
-
-            mouse.target = object.ID;
-        } else {
-            object.onMouse.status = false;
-        }
+objectSet.UI.objectPositionSet = function () {
+    for (let ID in objectSet.UI.object) {
+        objectSet.UI.object[ID].positionSet();
     }
 };
 
-game.rendLoop = function () {
-    game.rend();
-
-    setTimeout(() => {
-        game.rendLoop();
-    }, game.interval.FPS.millisecond);
-};
-
-game.tickLoop = function () {
-    game.tick();
-
-    setTimeout(() => {
-        game.tickLoop();
-    }, game.interval.tick.millisecond);
-};
-
-game.interval.FPS.set = function () {
-    game.interval.FPS.millisecond = Math.floor(1000 / game.interval.FPS.value);
-};
-
-game.interval.tick.set = function () {
-    game.interval.tick.millisecond = Math.floor(1000 / game.interval.tick.value);
-};
-
-objectSet.UI.clear = function () {
-    objectSet.UI.object = {};
-};
-
-game.UI.site.change = function (index) {
-    switch (index) {
-        case "startManu":
-            objectSet.UI.clear();
-            game.UI.site.startManu();
-            break;
-        case "mapSelect":
-            objectSet.UI.clear();
-            game.UI.site.mapSelect();
-            break;
-        default:
-            throw new Error("Fault while change UI site: cannot reach the UI site index \"" + index + "\"");
-    }
-
-    let versionInformation = new string();
-    versionInformation.ID = "versionInformation";
-    versionInformation.string = "Pre-alpha version";
-    versionInformation.position.x = game.UI.gap.medium;
-    versionInformation.position.y = game.UI.gap.medium;
-    versionInformation.color = "#ffffff";
-    versionInformation.fontSize = game.UI.font.size.small;
-    objectSet.UI.add(versionInformation);
-};
-
-game.UI.font.size.getStringWidth = function (string) {
-    let width = 0;
-
-    for (let i = 0; i < string.length; i++) {
-        for (let j = 0; j < game.UI.font.ASCII.characterSet.length; j++) {
-            if (string[i] == game.UI.font.ASCII.characterSet[j]) {
-                width += game.UI.font.ASCII.width;
-
-                break;
-            }
-        }
-        width++;
-    }
-
-    return width;
-};
-
-game.UI.site.escape = function () {
-    switch (game.content.site) {
-        case "mapSelect":
-            game.UI.site.change("mainManu");
-    }
-};
-
-game.input.key.tick = function () {
-    if (keySet["Escape"]) {
-        game.UI.site.escape();
-    }
-};
+// TODO: 第一次打开网页说明浏览器同源政策报错刷新

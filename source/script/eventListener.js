@@ -1,6 +1,13 @@
-onmousemove = (event) => {
-    mouse.position.set(event);
-}
+onmousemove = mouse.position.set;
+
+onresize = () => {
+    canvas.size.set();
+    canvas.DOM.size.set();
+
+    game.rend.fontStyleSet();
+
+    objectSet.UI.objectPositionSet();
+};
 
 onkeydown = (event) => {
     keySet[event.key] = true;
@@ -14,12 +21,6 @@ onmousedown = (event) => {
     keySet[event.button] = true;
 };
 
-onmousedown = (event) => {
+onmouseup = (event) => {
     keySet[event.button] = false;
-};
-
-onresize = () => {
-    canvas.size.set();
-    canvas.DOM.size.set();
-    game.UI.font.style.set();
 };

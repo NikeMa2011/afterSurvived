@@ -1,13 +1,14 @@
-pageTitleDOM.innerHTML = game.content.title;
-
-game.interval.FPS.set();
-game.interval.tick.set();
-
 canvas.size.set();
 canvas.DOM.size.set();
-game.UI.font.style.set();
 
-game.tickLoop();
-game.rendLoop();
+game.page.set();
 
-game.UI.site.change("startManu");
+game.graphic.FPS.milisecondDelaySet();
+game.opration.TPS.milisecondDelaySet();
+
+
+game.rend.fontStyleSet();
+
+game.rend.loop();
+
+game.UI.site.change("start");

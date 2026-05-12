@@ -2,10 +2,10 @@
 <html lang="zh">
 
 <head>
-    <link rel="shortcut icon" href="" type="image/x-icon">
+    <link id="pageIcon" rel="shortcut icon" href="" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8">
-    <title id="pageTitle">Title undefined</title>
+    <title id="pageTitle">title undefined</title>
 </head>
 
 <body>
@@ -15,14 +15,24 @@
 <style>
     @import url("source/style/main.css");
 </style>
+
+<script>
+    "use strict";
+
+    // 虽然但是"use strict"(严格模式)是用来让开发者写的代码可靠一点并且提升运行速度(虽然只有一点)的, 所以它更像是在游戏引擎配置其渲染性能一样, 所以添加在框架里面(index.html)很正常罢(doge)
+    // 不用任何第三方库手搓这一块(依旧匠入精神)
+</script>
+
 <script src="source/script/main.js"></script>
+<script src="source/script/class.js"></script>
+<script src="source/script/content.js"></script>
+
 <script src="source/script/game.js"></script>
 <script src="source/script/rend.js"></script>
 <script src="source/script/event.js"></script>
 <script src="source/script/eventListener.js"></script>
-<script src="source/script/class.js"></script>
 <script src="source/script/UI.js"></script>
-<script src="source/script/content.js"></script>
+
 <script src="source/script/init.js"></script>
 
 </html>

@@ -1,62 +1,117 @@
-game.UI.function.highLightWithBorder = function (object) {
-    canvasContext.fillStyle = "rgba(125, 125, 125, " + object.onMouse.alpha / 2 + ")";
-
-    canvasContext.fillRect(
-        object.position.x - game.UI.gap.small,
-        object.position.y - game.UI.gap.small,
-        object.size.x + (game.UI.gap.small * 2),
-        object.size.y + (game.UI.gap.small * 2)
-    );
-};
+// TODO: 加按钮被鼠标选中高亮效果
 
 class UI {
     constructor() {
         this.ID = undefined;
-        this.onClick = undefined;
-        this.onMouse = {
-            status: undefined,
-            function: undefined,
-            alpha: 0
-        };
         this.position = {
+            x: undefined,
+            y: undefined,
+            expression: {
+                x: undefined,
+                y: undefined
+            }
+        };
+        this.size = {
             x: undefined,
             y: undefined
         };
-        this.color = undefined;
+        this.border = {
+            color: ""
+        }
     }
+
+    positionSet = function () {
+        this.position.x = this.position.expression.x();
+        this.position.y = this.position.expression.y();
+    };
 };
 
 class string extends UI {
     constructor() {
         super();
-        this.string = undefined;
-        this.fontSize = undefined;
+
+        this.string = "undefined";
+        this.fontColor = game.UI.color.purePurple;
+        this.fontSize = game.UI.font.size.medium;
     }
 
-    autoSet() {
-        this.string == undefined ? this.string = "undefined" : undefined;
-        this.size == undefined ? game.UI.font.size.medium : undefined;
-        this.color == undefined ? this.color = "#e600ff" : undefined;
-        this.size = {
-            x: this.fontSize * game.UI.font.size.getStringWidth(this.string),
-            y: this.fontSize
-        };
-    }
+    sizeSet = function () {
+        this.size.x = this.fontSize * game.UI.font.getStringWidthRatio(this.string);
+        this.size.y = this.fontSize;
+    };
 
-    draw() {
-        if (this.onMouse.status) {
-            if (this.onMouse.function) {
-                this.onMouse.function(this);
-            }
+    draw = function () {
+        if (this.border.color) {
+            canvasContext.strokeStyle = this.border.color;
+            canvasContext.strokeRect(
+                this.position.x,
+                this.position.y,
+                this.size.x,
+                this.size.y
+            );
         }
 
-        game.UI.font.set(this.fontSize);
-        canvasContext.fillStyle = this.color;
+        canvasContext.fillStyle = this.fontColor;
+        game.rend.fontSizeSet(this.fontSize);
 
         canvasContext.fillText(
             this.string,
             this.position.x,
             this.position.y
         );
+    };
+};
+
+class image extends UI {
+    constructor() {
+        super();
+
+        this.image = {};
+    }
+
+    draw = function () {
+        if (this.border.color) {
+            canvasContext.strokeStyle = this.border.color;
+            canvasContext.strokeRect(
+                this.position.x,
+                this.position.y,
+                this.size.x,
+                this.size.y
+            );
+        }
+
+        canvasContext.fillStyle = this.color;
+        game.rend.fontSizeSet(this.fontSize);
+
+        canvasContext.fillText(
+            this.string,
+            this.position.x,
+            this.position.y
+        );
+    };
+};
+
+class box extends UI {
+    constructor() {
+        super();
+
+        this.innerPart = {
+            atLeft: true,
+            size: undefined
+        }
+    }
+
+    draw() {
+        if (this.border.color) {
+            canvasContext.strokeStyle = this.border.color;
+            canvasContext.strokeRect(
+                this.position.x,
+                this.position.y,
+                this.size.x,
+                this.size.y
+            );
+        }
+
+
     }
 };

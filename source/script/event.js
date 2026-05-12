@@ -4,11 +4,11 @@ mouse.position.set = function (event) {
 };
 
 canvas.size.set = function () {
-    canvas.size.x = window.innerWidth;
-    canvas.size.y = window.innerHeight;
+    canvas.size.width = window.innerWidth;
+    canvas.size.height = window.innerHeight;
 };
 
 canvas.DOM.size.set = function () {
-    canvasDOM.width = canvas.size.x;
-    canvasDOM.height = canvas.size.y;
+    canvasDOM.width = window.innerWidth;
+    canvasDOM.height = window.innerHeight;
 };
