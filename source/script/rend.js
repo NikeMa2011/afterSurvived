@@ -1,4 +1,8 @@
 game.rend.function = function () {
+    viewpoint.position.set();
+
+    game.rend.background();
+
     game.rend.UI();
     game.rend.GO();
 
@@ -8,11 +12,16 @@ game.rend.function = function () {
 };
 
 game.rend.UI = function () {
-    game.rend.background();
+    for (let ID in objectSet.UI.object) {
+        objectSet.UI.object[ID].draw();
+    }
 };
 
 game.rend.GO = function () {
-
+    for (let ID in objectSet.GO.object) {
+        console.log(ID)
+        objectSet.GO.object[ID].draw();
+    }
 };
 
 canvas.size.set = function () {
@@ -42,4 +51,18 @@ game.rend.background = function () {
         canvas.size.width,
         canvas.size.height
     );
+};
+
+viewpoint.position.set = function () {
+    viewpoint.position = {
+        x: objectSet.GO.object["player"].position.x,
+        y: objectSet.GO.object["player"].position.y
+    };
+};
+
+viewpoint.size.set = function () {
+    viewpoint.size = {
+        width: canvas.size.width,
+        height: canvas.size.height
+    };
 };

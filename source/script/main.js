@@ -16,11 +16,33 @@ const canvas = {
     }
 };
 
-const game = {
-    UI: {
-        page: {
+const viewpoint = {
+    size: {
+        width: undefined,
+        height: undefined
+    },
+    position: {
+        x: undefined,
+        y: undefined
+    },
+    offset: {
+        x: undefined,
+        y: undefined
+    }
+};
 
-        },
+const mouse = {
+    position: {
+        x: undefined,
+        y: undefined
+    }
+};
+
+const game = {
+    page: {
+
+    },
+    UI: {
         gap: {
             large: 50,
             medium: 25,

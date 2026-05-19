@@ -11,7 +11,7 @@ onmousedown = (event) => {
 };
 
 onmouseup = (event) => {
-    keyset[event.button] = false;
+    keySet[event.button] = false;
 };
 
 onresize = () => {
@@ -19,4 +19,5 @@ onresize = () => {
 
     canvas.size.set();
     canvas.DOM.size.set();
+    viewpoint.size.set();
 };
